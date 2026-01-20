@@ -7,3 +7,5 @@ vim.keymap.set("n", "<leader>db", function()
 end, { desc = "Open Dashboard" })
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
