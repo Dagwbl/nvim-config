@@ -47,4 +47,9 @@ $$
 
 It doesn't work
 
+## Test Git
+
+At here, I change the default `blink.cmp` logic. Now I think I can comfortably input any sentence what I want, meanwhile keep the code auto-complete and snippet jumping out.
+
+Now let me test the Git function.
 
