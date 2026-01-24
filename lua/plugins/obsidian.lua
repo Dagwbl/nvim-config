@@ -1,40 +1,35 @@
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
-  lazy = true,
   ft = "markdown",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+
+  -- lazy.nvim keybindings (updated to new format)
   keys = {
-    { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New Note" },
-    { "<leader>ot", "<cmd>ObsidianToday<cr>", desc = "Today's Diary" },
-    { "<leader>oy", "<cmd>ObsidianYesterday<cr>", desc = "Yesterday's Diary" },
-    { "<leader>om", "<cmd>ObsidianTomorrow<cr>", desc = "Tomorrow's Diary" },
-    { "<leader>od", "<cmd>ObsidianDailies<cr>", desc = "Daily Notes List" },
-    { "<leader>os", "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch" },
-    { "<leader>of", "<cmd>ObsidianSearch<cr>", desc = "Search Notes" },
-    { "<leader>oT", "<cmd>ObsidianTemplate<cr>", desc = "Insert Template" },
-    { "<leader>oN", "<cmd>ObsidianNewFromTemplate<cr>", desc = "New from Template" },
-    { "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image" },
-    { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks" },
-    { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open in Obsidian App" },
+    { "<leader>on", "<cmd>Obsidian new<cr>", desc = "New Note" },
+    { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Today's Diary" },
+    { "<leader>oy", "<cmd>Obsidian yesterday<cr>", desc = "Yesterday's Diary" },
+    { "<leader>om", "<cmd>Obsidian tomorrow<cr>", desc = "Tomorrow's Diary" },
+    { "<leader>od", "<cmd>Obsidian dailies<cr>", desc = "Daily Notes List" },
+    { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "Quick Switch" },
+    { "<leader>of", "<cmd>Obsidian search<cr>", desc = "Search Notes" },
+    { "<leader>oT", "<cmd>Obsidian template<cr>", desc = "Insert Template" },
+    { "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from Template" },
+    { "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste Image" },
+    { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
+    { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian App" },
   },
+
+  -- lazy.nvim command definitions (updated to new format)
   cmd = {
-    "ObsidianNew",
-    "ObsidianToday",
-    "ObsidianYesterday",
-    "ObsidianTomorrow",
-    "ObsidianDailies",
-    "ObsidianQuickSwitch",
-    "ObsidianSearch",
-    "ObsidianTemplate",
-    "ObsidianNewFromTemplate",
-    "ObsidianOpen",
-    "ObsidianBacklinks",
-    "ObsidianPasteImg",
+    "Obsidian",
   },
+
+  ---@module 'obsidian'
+  ---@type obsidian.config
   opts = {
+    -- Disable legacy commands (using new format now)
+    legacy_commands = false,
+
     -- 工作区配置
     workspaces = {
       {
@@ -46,34 +41,61 @@ return {
     -- 新笔记存放位置
     notes_subdir = "content/posts/note",
 
-    -- 日记配置 - 匹配你的 content/diary/2026/January 结构
+    -- 日记配置 - 使用年月嵌套结构
     daily_notes = {
       folder = "content/diary",
-      date_format = "%Y/%B/%Y-%m-%d", -- 生成 2026/January/2026-01-23.md
+      date_format = "%Y-%m-%d", -- 文件名格式: 2026-01-24.md
       template = "diary.md",
     },
 
-    -- 补全配置 - LazyVim 默认使用 blink.cmp
-    completion = {
-      nvim_cmp = false, -- 禁用 nvim-cmp
-      blink = true, -- 启用 blink.cmp 集成
-      min_chars = 2,
-    },
+    -- 自定义日记文件路径 - 使用独立模块处理
+    note_path_func = function(spec)
+      local Path = require("obsidian").Path
+      local diary_path = require("utils.diary_path")
+
+      -- 检查是否是日记笔记
+      if diary_path.is_diary_path(tostring(spec.dir)) then
+        -- 使用日记路径处理模块
+        local file_path = diary_path.generate_diary_path_with_date(spec.dir, spec.id)
+
+        if file_path then
+          return Path.new(file_path)
+        else
+          -- 如果失败，回退到默认路径
+          vim.notify("Using fallback path for diary", vim.log.levels.WARN)
+          return spec.dir / tostring(spec.id)
+        end
+      else
+        -- 普通笔记使用默认路径
+        return spec.dir / tostring(spec.id)
+      end
+    end,
 
     -- 模板配置
     templates = {
-      folder = "archetypes/obsidian",
-      date_format = "%Y-%m-%d",
-      time_format = "%H:%M",
+      folder = "archetypes/nvim",
+      date_format = "%Y-%m-%d", -- YYYY-MM-DD
+      time_format = "%H:%M:%S", -- HH:mm:ss
       substitutions = {
+        -- ISO 8601 格式的完整日期时间
+        datetime = function()
+          return os.date("%Y-%m-%dT%H:%M:%S+00:00")
+        end,
+        -- 昨天
         yesterday = function()
           return os.date("%Y-%m-%d", os.time() - 86400)
         end,
+        -- 明天
         tomorrow = function()
           return os.date("%Y-%m-%d", os.time() + 86400)
         end,
+        -- 周数
         week = function()
           return os.date("%Y-W%W")
+        end,
+        -- 当前时间（用于 stime）
+        current_time = function()
+          return os.date("%H:%M")
         end,
       },
     },
@@ -91,8 +113,6 @@ return {
 
     -- Wiki 链接格式
     preferred_link_style = "markdown",
-
-    -- ✅ 修复: 删除 use_advanced_uri（已弃用）
 
     -- Windows 打开外部链接
     follow_url_func = function(url)
