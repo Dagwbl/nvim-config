@@ -79,7 +79,7 @@ return {
       substitutions = {
         -- ISO 8601 格式的完整日期时间
         datetime = function()
-          return os.date("%Y-%m-%dT%H:%M:%S+00:00")
+          return os.date("%Y-%m-%dT%H:%M:%S%z")
         end,
         -- 昨天
         yesterday = function()
