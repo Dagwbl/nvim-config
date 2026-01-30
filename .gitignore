@@ -8,3 +8,6 @@ foo.*
 data
 lazy-lock.json
 *_files/
+*.html
+*.typ
+
