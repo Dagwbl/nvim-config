@@ -8,3 +8,7 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 -- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>zz", "<cmd>Telescope zotero<cr>", { desc = "Zotero" })
+
+local quarto = require("quarto")
+quarto.setup()
+vim.keymap.set("n", "<leader>qp", quarto.quartoPreview, { silent = true, noremap = true })

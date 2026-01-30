@@ -20,4 +20,4 @@ But recognize that if you ever have to push these keys more than twice in succes
 
 - `ge`: Go to end of previous word.
 - `C-i`: To jump forward in history.
-- `C-o` To jump forward in history.
+- `C-o` To jump forward in history
