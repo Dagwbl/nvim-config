@@ -15,6 +15,6 @@ return {
   },
   keys = {
     -- suggested keymap
-    { "<leader>zi", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+    { "<leader>zi", "<cmd>PasteImage<cr>", desc = "Paste image" },
   },
 }
