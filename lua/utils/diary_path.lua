@@ -54,7 +54,15 @@ function M.parse_date_from_id(note_id)
       "November",
       "December",
     }
-    local month_name = month_names[tonumber(month)]
+    local month_num = tonumber(month)
+    local month_name = month_names[month_num]
+    
+    -- 如果月份名称解析失败，使用当前月份
+    if not month_name then
+      vim.notify(string.format("Invalid month number: %s, using current month", month), vim.log.levels.WARN)
+      month_name = os.date("%B")
+    end
+    
     return year, month_name
   end
 

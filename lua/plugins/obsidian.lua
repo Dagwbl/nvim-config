@@ -5,19 +5,19 @@ return {
 
   -- lazy.nvim keybindings (updated to new format)
   keys = {
-    { "<leader>on", "<cmd>Obsidian new<cr>", desc = "New Note" },
-    { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Today's Diary" },
-    { "<leader>oy", "<cmd>Obsidian yesterday<cr>", desc = "Yesterday's Diary" },
-    { "<leader>om", "<cmd>Obsidian tomorrow<cr>", desc = "Tomorrow's Diary" },
-    { "<leader>od", "<cmd>Obsidian dailies<cr>", desc = "Daily Notes List" },
-    { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "Quick Switch" },
-    { "<leader>of", "<cmd>Obsidian search<cr>", desc = "Search Notes" },
-    { "<leader>oT", "<cmd>Obsidian template<cr>", desc = "Insert Template" },
-    { "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from Template" },
-    { "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste Image" },
-    { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
-    { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian" },
-    { "<leader>oi", "<cmd>!typora %<cr>", desc = "Open in Typora" },
+    { "<leader>zn", "<cmd>Obsidian new<cr>", desc = "New Note" },
+    { "<leader>zt", "<cmd>Obsidian today<cr>", desc = "Today's Diary" },
+    { "<leader>zy", "<cmd>Obsidian yesterday<cr>", desc = "Yesterday's Diary" },
+    --     { "<leader>om", "<cmd>Obsidian tomorrow<cr>", desc = "Tomorrow's Diary" },
+    { "<leader>zl", "<cmd>Obsidian dailies<cr>", desc = "Daily Notes List" },
+    --     { "<leader>os", "<cmd>Obsidian quick_switch<cr>", desc = "Quick Switch" },
+    --     { "<leader>of", "<cmd>Obsidian search<cr>", desc = "Search Notes" },
+    --     { "<leader>oT", "<cmd>Obsidian template<cr>", desc = "Insert Template" },
+    --     { "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from Template" },
+    --     { "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste Image" },
+    --     { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
+    --     { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian" },
+    { "<leader>zo", "<cmd>!typora %<cr>", desc = "Open in Typora" },
   },
 
   -- lazy.nvim command definitions (updated to new format)
@@ -115,22 +115,15 @@ return {
     -- Wiki 链接格式
     preferred_link_style = "markdown",
 
-    -- Windows 打开外部链接
-    follow_url_func = function(url)
-      vim.ui.open(url) -- Neovim 0.10+ 原生支持
-    end,
-
-    follow_img_func = function(img)
-      vim.ui.open(img)
-    end,
-
-    -- 排序
-    sort_by = "modified",
-    sort_reversed = true,
+    -- 搜索配置
+    search = {
+      sort_by = "modified",
+      sort_reversed = true,
+    },
 
     -- 附件配置
     attachments = {
-      img_folder = "static/images",
+      folder = "static/images",
       img_name_func = function()
         return string.format("%s-", os.time())
       end,

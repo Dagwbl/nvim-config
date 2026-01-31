@@ -14,7 +14,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 The `z` menu mode is an eclectic mix of cursor positioning, code folding, and random command.
 
-**Never use the arrow keys to move the cursor.**
+**NEVER USE THE ARROW KEYS TO MOVE THE CURSOR.**
 
 But recognize that if you ever have to push these keys more than twice in succession to move the cursor, you’re wasting keystrokes.
 
