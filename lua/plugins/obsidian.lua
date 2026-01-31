@@ -16,7 +16,8 @@ return {
     { "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from Template" },
     { "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste Image" },
     { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
-    { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian App" },
+    { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian" },
+    { "<leader>oi", "<cmd>!typora %<cr>", desc = "Open in Typora" },
   },
 
   -- lazy.nvim command definitions (updated to new format)
