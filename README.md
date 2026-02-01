@@ -22,3 +22,17 @@ But recognize that if you ever have to push these keys more than twice in succes
 - `C-i`: To jump forward in history.
 - `C-o` To jump forward in history
 
+For example, if you are editing text rather than source code, you will find it useful to be able to navigate by sentences and paragraphs. Lzayvim further amends this collection of motions with other powerful navigation capabilities powered by a variety of plugins.
+
+- `(`/`)`: Jump to a previous/next sentence.
+- `{`/`}`: Jump to a previous/next blank line.
+- `[{`/`]}`: Jump out to the beginning/end of the `{}`.
+
+
+TODO:
+
+FIXME: 
+
+We can use `[t/]t` to jump to previous/next TODO or FIXME tag.
+
+
