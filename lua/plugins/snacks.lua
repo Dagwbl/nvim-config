@@ -9,6 +9,10 @@ return {
         inline = false, -- Enable inline images in markdown/other buffers
         float = true,
       },
+      markdown = {
+        enabled = true,
+        filetypes = { "markdown", "mdx", "quarto", "rmd", "qmd" },
+      },
     },
     explorer = {
       enabled = true,

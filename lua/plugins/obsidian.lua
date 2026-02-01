@@ -30,7 +30,9 @@ return {
   opts = {
     -- Disable legacy commands (using new format now)
     legacy_commands = false,
-
+    ui = {
+      enable = false,
+    },
     -- 工作区配置
     workspaces = {
       {
