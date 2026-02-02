@@ -9,3 +9,5 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 -- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader>zc", "<cmd>Telescope zotero<cr>", { desc = "Zotero citation" })
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
+
+vim.keymap.set("n", "<leader>fx", "<cmd>!start explorer /select,%:p<cr>", { desc = "Show in Explorer" })
