@@ -35,4 +35,5 @@ FIXME:
 
 We can use `[t/]t` to jump to previous/next TODO or FIXME tag.
 
+Seeking surrounding objects.
 
