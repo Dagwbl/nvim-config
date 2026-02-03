@@ -104,15 +104,6 @@ return {
     -- 新笔记位置
     new_notes_location = "notes_subdir",
 
-    -- 笔记 ID 生成 - 支持中文标题
-    note_id_func = function(title)
-      if title ~= nil then
-        return title:gsub(" ", "-"):gsub("[^A-Za-z0-9%-\228-\233]", "")
-      else
-        return tostring(os.time())
-      end
-    end,
-
     -- Wiki 链接格式
     preferred_link_style = "markdown",
 
