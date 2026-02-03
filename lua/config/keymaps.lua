@@ -11,6 +11,7 @@ vim.keymap.set("n", "<leader>zc", "<cmd>Telescope zotero<cr>", { desc = "Zotero 
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
 
 vim.keymap.set("n", "<leader>zs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
+
 vim.keymap.set("n", "<leader>zo", function()
   vim.ui.open(vim.fn.expand("%:p"))
 end, { desc = "Open file in system" })
