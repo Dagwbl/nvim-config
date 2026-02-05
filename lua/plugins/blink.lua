@@ -1,27 +1,36 @@
 return {
-  -- {
-  --   "saghen/blink.cmp",
-  --   opts = {
-  --     keymap = {
-  --       -- 显式定义 Tab 的行为，确保包含 snippet_forward
-  --       ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
-  --       ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
-  --
-  --       -- Enter 键逻辑：只有在手动选中（highlighted）的情况下才确认
-  --       ["<CR>"] = { "accept", "fallback" },
-  --
-  --       -- 保持基本的补全控制
-  --       ["<C-space>"] = { "show", "show_documentation", "hide" },
-  --     },
-  --     completion = {
-  --       list = {
-  --         selection = {
-  --           -- 核心设置：不默认选中第一项，防止 Enter 误触发
-  --           preselect = false,
-  --           auto_insert = false,
-  --         },
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    "saghen/blink.cmp",
+    opts = {
+      --     keymap = {
+      --       -- 显式定义 Tab 的行为，确保包含 snippet_forward
+      --       ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+      --       ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+      --
+      --       -- Enter 键逻辑：只有在手动选中（highlighted）的情况下才确认
+      --       ["<CR>"] = { "accept", "fallback" },
+      --
+      --       -- 保持基本的补全控制
+      --       ["<C-space>"] = { "show", "show_documentation", "hide" },
+      --     },
+      --     completion = {
+      --       list = {
+      --         selection = {
+      --           -- 核心设置：不默认选中第一项，防止 Enter 误触发
+      --           preselect = false,
+      --           auto_insert = false,
+      --         },
+      --       },
+      --     },
+      sources = {
+        default = { "avante" },
+        providers = {
+          avante = {
+            mode = "blink-cmp-avante",
+            name = "Avante",
+          },
+        },
+      },
+    },
+  },
 }
