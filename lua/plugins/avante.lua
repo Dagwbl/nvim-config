@@ -27,9 +27,10 @@ return {
     opts = {
       provider = "copilot",
       providers = {
-          copilot = {
-            model = "claude-sonnet-4.5", -- Recommended for Avante
-          },
+        copilot = {
+          model = "claude-sonnet-4.5",
+          display_name = "Sonnet 4.5",
+        },
         ["copilot-sonnet"] = {
           __inherited_from = "copilot",
           model = "claude-sonnet-4.5",
@@ -44,6 +45,12 @@ return {
           __inherited_from = "copilot",
           model = "claude-opus-4.5",
           display_name = "Opus 4.5",
+        },
+        ["gemini"] = {
+          endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+          model = "gemini-3.0-pro",
+          display_name = "Gemini 3.0 Pro",
+          api_key_name = "GEMINI_API_KEY",
         },
       },
     },
