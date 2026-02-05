@@ -8,7 +8,7 @@ return {
       relative_to_current_file = true,
       drag_and_drop = {
         enabled = true,
-        insert_mode = false,
+        insert_mode = true,
       },
     },
     -- or leave it empty to use the default settings
