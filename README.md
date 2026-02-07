@@ -1,3 +1,8 @@
+# Todo
+
+TODO: `norm` command
+
+
 # 💤 LazyVim
 
 A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
@@ -36,4 +41,9 @@ FIXME:
 We can use `[t/]t` to jump to previous/next TODO or FIXME tag.
 
 Seeking surrounding objects.
+
+CTRL + '/' to open the terminal in the current directory.
+R: replace mode
+
+Next, type another / to separate the pattern from the replacement, and then type whatever string you want to replace it with. LazyVim will live update all instances of the search term with the replacement term so you can preview what it will look like. Here, I’m going to replace pattern with FOOBAR:
 

@@ -25,6 +25,16 @@ return {
       auto_preview = true,
       replace_netrw = true,
     },
+    notifier = {
+      timeout = 5000,
+    },
+    styles = {
+      notification = {
+        wo = {
+          wrap = true,
+        },
+      },
+    },
     picker = {
       sources = {
         explorer = {
