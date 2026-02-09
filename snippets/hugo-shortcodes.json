@@ -1,0 +1,110 @@
+{
+  "Hugo Shortcode: audio": {
+    "prefix": ["hsc-audio"],
+    "body": "{{< audio \"${1:text}\" \"${2:audio_url}\" >}}",
+    "description": "Insert audio player shortcode (positional: text, url)"
+  },
+  "Hugo Shortcode: bilibili (named)": {
+    "prefix": ["hsc-bilibili"],
+    "body": "{{< bilibili id=\"${1:BV号}\" p=${2:1} >}}",
+    "description": "Insert bilibili video player (named params: id, page)"
+  },
+  "Hugo Shortcode: bilibili (positional)": {
+    "prefix": ["hsc-bilibili-pos"],
+    "body": "{{< bilibili ${1:BV号} ${2:1} >}}",
+    "description": "Insert bilibili video player (positional: bvid, page)"
+  },
+  "Hugo Shortcode: douban": {
+    "prefix": ["hsc-douban"],
+    "body": "{{< douban src=\"${1:https://movie.douban.com/subject/ID/}\" >}}",
+    "description": "Insert douban movie/book card (src=douban URL)"
+  },
+  "Hugo Shortcode: encrypt": {
+    "prefix": ["hsc-encrypt"],
+    "body": [
+      "{{< encrypt hint=\"${1:hint text}\" >}}",
+      "${2:encrypted content}",
+      "{{< /encrypt >}}"
+    ],
+    "description": "Insert encrypted content block with password protection"
+  },
+  "Hugo Shortcode: encrypt (default hint)": {
+    "prefix": ["hsc-encrypt-default"],
+    "body": [
+      "{{< encrypt >}}",
+      "${1:encrypted content}",
+      "{{< /encrypt >}}"
+    ],
+    "description": "Insert encrypted content block with default hint"
+  },
+  "Hugo Shortcode: heatmap": {
+    "prefix": ["hsc-heatmap"],
+    "body": "{{< heatmap >}}",
+    "description": "Insert GitHub-style contribution heatmap"
+  },
+  "Hugo Shortcode: music (auto URL)": {
+    "prefix": ["hsc-music-auto"],
+    "body": "{{< music auto=\"${1:https://music.163.com/#/song?id=ID}\" >}}",
+    "description": "Insert music player with auto-detected URL (NetEase/QQ/etc)"
+  },
+  "Hugo Shortcode: music (server)": {
+    "prefix": ["hsc-music"],
+    "body": "{{< music server=\"${1|netease,tencent,kugou,xiami,baidu|}\" type=\"${2|song,playlist,album,search,artist|}\" id=\"${3:id}\" >}}",
+    "description": "Insert music player with server/type/id"
+  },
+  "Hugo Shortcode: music (custom)": {
+    "prefix": ["hsc-music-custom"],
+    "body": "{{< music url=\"${1:audio_url}\" name=\"${2:song name}\" artist=\"${3:artist}\" cover=\"${4:cover_url}\" >}}",
+    "description": "Insert music player with custom audio file"
+  },
+  "Hugo Shortcode: music (positional)": {
+    "prefix": ["hsc-music-pos"],
+    "body": "{{< music ${1|netease,tencent,kugou,xiami,baidu|} ${2|song,playlist,album,search,artist|} ${3:id} >}}",
+    "description": "Insert music player (positional: server type id)"
+  },
+  "Hugo Frontmatter: weekly": {
+    "prefix": ["fm-week"],
+    "body": [
+      "---",
+      "title: ${1:$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE} Week ${2}",
+      "date: ${3:$CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND-0700}",
+      "categories:",
+      "  - weekly",
+      "series:",
+      "  - ${4:group-meeting}",
+      "tags:",
+      "  - ${5}",
+      "location: ${6}",
+      "draft: ${7:true}",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Insert weekly report frontmatter"
+  },
+  "Hugo Shortcode: youtube": {
+    "prefix": ["hsc-youtube"],
+    "body": "{{< youtube ${1:video_id} >}}",
+    "description": "Hugo built-in YouTube embed shortcode"
+  },
+  "Hugo Cover Image": {
+    "prefix": ["hugo-cover"],
+    "body": [
+      "cover:",
+      "    image: \"${1:image path/url}\"",
+      "    alt: \"${2:alt text}\"",
+      "    caption: \"${3:caption}\"",
+      "    relative: ${4:false}",
+      "    hidden: ${5:true}"
+    ],
+    "description": "PaperMod cover image YAML block"
+  },
+  "Markdown Callout/Admonition": {
+    "prefix": ["admonition"],
+    "body": [
+      "> [!${1|NOTE,TIP,IMPORTANT,WARNING,CAUTION|}]",
+      "> ${2:content}"
+    ],
+    "description": "Markdown callout/admonition block"
+  }
+}

@@ -47,3 +47,20 @@ R: replace mode
 
 Next, type another / to separate the pattern from the replacement, and then type whatever string you want to replace it with. LazyVim will live update all instances of the search term with the replacement term so you can preview what it will look like. Here, I’m going to replace pattern with FOOBAR:
 
+
+1.
+1.
+1.
+1.
+1.
+1.
+1.
+1.
+1.
+1.
+
+Chapter 2: Intro
+Chapter 3: Install
+Chapter 3: 1 Weird modal editing trick
+Chapter 4: The numbered marks 1-9
+Chapter 5: Navigating things

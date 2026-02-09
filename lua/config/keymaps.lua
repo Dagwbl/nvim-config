@@ -9,6 +9,7 @@ end, { desc = "Home Dashboard" })
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
+vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
 
 vim.keymap.set("n", "<leader>zs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
 vim.keymap.set("n", "<leader>zo", function()
