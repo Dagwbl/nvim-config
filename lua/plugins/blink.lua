@@ -14,7 +14,11 @@ return {
     opts = {
       -- Use the "super-tab" preset for VS Code-like behavior
       keymap = { preset = "super-tab" },
-
+      enabled = function()
+        return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+          and vim.bo.buftype ~= "prompt"
+          and vim.b.completion ~= false
+      end,
       sources = {
         default = { "avante" },
         providers = {
