@@ -6,7 +6,14 @@ return {
       colorscheme = "catppuccin-latte",
     },
   },
-
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      opts.options.theme = "catppuccin"
+      opts.options.section_separators = { left = "", right = "" }
+      -- opts.options.component_separators = { left = "", right = "" }
+    end,
+  },
   -- Gruvbox light/soft settings
   -- {
   --   "ellisonleao/gruvbox.nvim",
