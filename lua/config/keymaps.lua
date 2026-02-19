@@ -26,3 +26,11 @@ vim.keymap.set("n", "<leader><delete>", function()
 end, { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>bo", Snacks.bufdelete.other, { desc = "Close Other Buffers" })
 vim.keymap.set("n", "<leader><CR>", "<cmd>%bd<cr>", { desc = "Close All Buffers" })
+
+-- Change current word to hashtag
+vim.keymap.set("n", "<leader>h", function()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  local start_col = vim.fn.match(line:sub(1, col + 1), "\\k*$")
+  vim.api.nvim_buf_set_text(0, row - 1, start_col, row - 1, start_col, { "#" })
+end, { desc = "Add hashtag before current word" })
