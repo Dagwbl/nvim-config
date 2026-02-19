@@ -9,8 +9,6 @@ vim.opt.mouse = "a"
 vim.opt.linespace = 4
 vim.opt.spell = true
 vim.opt.spelllang = "en"
-vim.o.guifont = "Inter:h12"
-
 local hostname = vim.fn.hostname()
 if vim.g.neovide then
   -- Condition based on PC Name
@@ -19,6 +17,7 @@ if vim.g.neovide then
   elseif hostname == "R7000" then
     vim.cmd("cd D:/UA/Winter-2026/")
   end
-
-  -- vim.o.guifont = "JetBrainsMono Nerd Font Mono:h12"
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h13"
+else
+  vim.o.guifont = "Inter,JetBrainsMono Nerd Font Mono,Symbols Nerd Font Mono:h13"
 end
