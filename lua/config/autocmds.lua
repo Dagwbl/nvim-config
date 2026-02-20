@@ -14,3 +14,10 @@ vim.filetype.add({
     qmd = "quarto",
   },
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "quarto", "tex", "text" },
+  callback = function()
+    require("config.writing-mode").toggle()
+  end,
+})

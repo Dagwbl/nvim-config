@@ -34,3 +34,7 @@ vim.keymap.set("n", "<leader>h", function()
   local start_col = vim.fn.match(line:sub(1, col + 1), "\\k*$")
   vim.api.nvim_buf_set_text(0, row - 1, start_col, row - 1, start_col, { "#" })
 end, { desc = "Add hashtag before current word" })
+
+vim.keymap.set("n", "<leader>zw", function()
+  require("config.writing-mode").toggle()
+end, { desc = "Toggle Writing Mode" })
