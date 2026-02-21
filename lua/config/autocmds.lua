@@ -21,3 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
     require("config.writing-mode").toggle()
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.b.completion_enabled = false
+  end,
+})

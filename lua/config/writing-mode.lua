@@ -9,21 +9,22 @@ function M.toggle()
     vim.o.number = false
     vim.o.relativenumber = false
     vim.o.signcolumn = "no"
-    vim.o.cursorline = false
-    vim.o.colorcolumn = ""
-    vim.o.laststatus = 0
-    vim.o.showmode = false
+    -- vim.o.foldcolumn = "auto:2"
+    -- vim.o.laststatus = 1
+    -- vim.o.showmode = false
 
     -- Text behavior
     vim.o.wrap = true
     vim.o.linebreak = true
+    vim.o.linespace = 8
     vim.o.breakindent = true
     vim.o.spell = true
-    vim.o.spelllang = "en_ca"
+    vim.o.spelllang = "en_us"
     vim.o.textwidth = 0
 
     -- Hide diagnostics
     vim.diagnostic.enable(false)
+    vim.b.completion_enabled = false
 
     -- Markdown conceal
     vim.o.conceallevel = 2
@@ -36,9 +37,10 @@ function M.toggle()
     vim.o.number = true
     vim.o.relativenumber = true
     vim.o.signcolumn = "yes"
-    vim.o.cursorline = true
-    vim.o.laststatus = 3
-    vim.o.showmode = true
+    -- vim.o.laststatus = 3
+    -- vim.o.showmode = true
+    vim.o.linespace = 4
+    vim.o.foldcolumn = "auto:0"
 
     -- Restore text behavior
     vim.o.wrap = false
@@ -46,6 +48,7 @@ function M.toggle()
     vim.o.conceallevel = 0
 
     vim.diagnostic.enable(true)
+    vim.b.completion_enabled = true
 
     -- require("zen-mode").close()
     -- require("twilight").disable()

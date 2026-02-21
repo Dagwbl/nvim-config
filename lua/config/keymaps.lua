@@ -38,3 +38,11 @@ end, { desc = "Add hashtag before current word" })
 vim.keymap.set("n", "<leader>zw", function()
   require("config.writing-mode").toggle()
 end, { desc = "Toggle Writing Mode" })
+vim.keymap.set("n", "<leader>zc", function()
+  vim.b.completion_enabled = not vim.b.completion_enabled
+  if vim.b.completion_enabled == false then
+    print("Completion Disabled")
+  else
+    print("Completion Enabled")
+  end
+end, { desc = "Toggle Blink Completion" })
