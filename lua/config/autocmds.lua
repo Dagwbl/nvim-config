@@ -18,12 +18,17 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "quarto", "tex", "text" },
   callback = function()
-    require("config.writing-mode").enable()
+    vim.schedule(function()
+      -- vim.opt_local.wrap = true
+      -- vim.opt_local.spell = true
+      Snacks.zen()
+      vim.b.completion_enabled = false
+    end)
   end,
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function()
-    vim.b.completion_enabled = false
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   callback = function()
+--     vim.b.completion_enabled = false
+--   end,
+-- })

@@ -2,6 +2,49 @@ return {
   "folke/snacks.nvim",
   ---@type snacks.Config
   opts = {
+    styles = {
+      notification = {
+        wo = {
+          wrap = true,
+        },
+      },
+      zen = {
+        backdrop = { transparent = false, blend = 90 },
+      },
+    },
+    zen = {
+      toggles = {
+        diagnostics = false,
+        inlay_hints = true,
+      },
+      on_open = function(win)
+        win._number = vim.wo.number
+        win._relativenumber = vim.wo.relativenumber
+
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+        pcall(function()
+          vim.opt.linespace = 8
+        end)
+        pcall(function()
+          vim.opt.foldcolumn = "2"
+        end)
+      end,
+      on_close = function(win)
+        if win._number ~= nil then
+          vim.wo.number = win._number
+        end
+        if win._relativenumber ~= nil then
+          vim.wo.relativenumber = win._relativenumber
+        end
+        pcall(function()
+          vim.opt.linespace = 2
+        end)
+        pcall(function()
+          vim.opt.foldcolumn = "0"
+        end)
+      end,
+    },
     image = {
       enabled = true,
       force = true,
@@ -27,13 +70,6 @@ return {
     },
     notifier = {
       timeout = 5000,
-    },
-    styles = {
-      notification = {
-        wo = {
-          wrap = true,
-        },
-      },
     },
     picker = {
       sources = {

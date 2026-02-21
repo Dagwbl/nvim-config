@@ -6,6 +6,7 @@
 vim.keymap.set("n", "<leader>zh", function()
   Snacks.dashboard()
 end, { desc = "Home Dashboard" })
+
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
@@ -34,10 +35,6 @@ vim.keymap.set("n", "<leader>h", function()
   vim.api.nvim_buf_set_text(0, row - 1, start_col, row - 1, start_col, { "#" })
 end, { desc = "Add hashtag before current word" })
 
--- Writing mode
-vim.keymap.set("n", "<leader>zw", function()
-  require("config.writing-mode").toggle()
-end, { desc = "Toggle Writing Mode" })
 -- Toggle Completion
 vim.keymap.set("n", "<leader>zc", function()
   vim.b.completion_enabled = not vim.b.completion_enabled

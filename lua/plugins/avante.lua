@@ -1,35 +1,35 @@
 return {
   {
     "yetone/avante.nvim",
-  keys = {
-    {
-      "<leader>ap",
-      function()
-        local avante = require("avante")
-        local config = require("avante.config")
-        -- Get all defined provider keys from your config
-        local providers = vim.tbl_keys(config.providers)
-        
-        vim.ui.select(providers, {
-          prompt = "Select Avante Provider:",
-          format_item = function(item)
-            return config.providers[item].display_name or item
-          end,
-        }, function(choice)
-          if choice then
-            vim.cmd("AvanteSwitchProvider " .. choice)
-          end
-        end)
-      end,
-      desc = "Avante: Select Provider",
+    keys = {
+      {
+        "<leader>ap",
+        function()
+          local avante = require("avante")
+          local config = require("avante.config")
+          -- Get all defined provider keys from your config
+          local providers = vim.tbl_keys(config.providers)
+
+          vim.ui.select(providers, {
+            prompt = "Select Avante Provider:",
+            format_item = function(item)
+              return config.providers[item].display_name or item
+            end,
+          }, function(choice)
+            if choice then
+              vim.cmd("AvanteSwitchProvider " .. choice)
+            end
+          end)
+        end,
+        desc = "Avante: Select Provider",
+      },
     },
-  },
     opts = {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-sonnet-4.5",
-          display_name = "Sonnet 4.5",
+          model = "claude-opus-4.6",
+          display_name = "Opus 4.6",
         },
         ["copilot-sonnet"] = {
           __inherited_from = "copilot",

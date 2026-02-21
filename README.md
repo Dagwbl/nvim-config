@@ -59,8 +59,8 @@ Next, type another / to separate the pattern from the replacement, and then type
 1.
 1.
 
-Chapter 2: Intro
-Chapter 3: Install
-Chapter 3: 1 Weird modal editing trick
-Chapter 4: The numbered marks 1-9
-Chapter 5: Navigating things
+Chapter 1: Intro
+Chapter 2: Install
+Chapter 2: 1 Weird modal editing trick
+Chapter 3: The numbered marks 1-9
+Chapter 4: Navigating things
