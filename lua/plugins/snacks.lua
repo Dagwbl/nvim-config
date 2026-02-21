@@ -20,9 +20,11 @@ return {
       on_open = function(win)
         win._number = vim.wo.number
         win._relativenumber = vim.wo.relativenumber
+        win._completion = vim.b.completion_enabled
 
         vim.wo.number = false
         vim.wo.relativenumber = false
+        vim.b.completion_enabled = false
         pcall(function()
           vim.opt.linespace = 8
         end)
@@ -31,6 +33,9 @@ return {
         end)
       end,
       on_close = function(win)
+        if win._completion ~= nil then
+          vim.b.completion_enabled = win._completion
+        end
         if win._number ~= nil then
           vim.wo.number = win._number
         end

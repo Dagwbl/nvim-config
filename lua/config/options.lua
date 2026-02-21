@@ -10,7 +10,8 @@ if vim.g.neovide then
   if hostname == "WVLIU-GD15" then
     vim.cmd("cd D:/jinpeng6/Documents/Course/Winter-2026/")
   elseif hostname == "R7000" then
-    vim.cmd("cd D:/UA/Winter-2026/")
+    -- vim.cmd("cd D:/UA/Winter-2026/")
+    vim.cmd("cd D:/blog/")
   end
   vim.o.guifont = "Iosevka Nerd Font Mono,IosevkaTermSlab Nerd Font Mono,JetBrainsMono Nerd Font Mono:h14"
 else

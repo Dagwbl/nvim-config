@@ -18,12 +18,11 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "quarto", "tex", "text" },
   callback = function()
-    vim.schedule(function()
-      -- vim.opt_local.wrap = true
-      -- vim.opt_local.spell = true
-      Snacks.zen()
-      vim.b.completion_enabled = false
-    end)
+    -- vim.schedule(function()
+    -- vim.opt_local.wrap = true
+    -- vim.opt_local.spell = true
+    Snacks.zen()
+    -- end)
   end,
 })
 
