@@ -6,7 +6,6 @@
 vim.keymap.set("n", "<leader>zh", function()
   Snacks.dashboard()
 end, { desc = "Home Dashboard" })
-
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
@@ -35,9 +34,11 @@ vim.keymap.set("n", "<leader>h", function()
   vim.api.nvim_buf_set_text(0, row - 1, start_col, row - 1, start_col, { "#" })
 end, { desc = "Add hashtag before current word" })
 
+-- Writing mode
 vim.keymap.set("n", "<leader>zw", function()
   require("config.writing-mode").toggle()
 end, { desc = "Toggle Writing Mode" })
+-- Toggle Completion
 vim.keymap.set("n", "<leader>zc", function()
   vim.b.completion_enabled = not vim.b.completion_enabled
   if vim.b.completion_enabled == false then
@@ -46,3 +47,14 @@ vim.keymap.set("n", "<leader>zc", function()
     print("Completion Enabled")
   end
 end, { desc = "Toggle Blink Completion" })
+
+-- Quarto config
+local runner = require("quarto.runner")
+vim.keymap.set("n", "<leader>rc", runner.run_cell, { desc = "run cell", silent = true })
+vim.keymap.set("n", "<leader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+vim.keymap.set("n", "<leader>rA", runner.run_all, { desc = "run all cells", silent = true })
+vim.keymap.set("n", "<leader>rl", runner.run_line, { desc = "run line", silent = true })
+vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "run visual range", silent = true })
+vim.keymap.set("n", "<leader>r%", function()
+  runner.run_all(true)
+end, { desc = "run all cells of all languages", silent = true })

@@ -18,7 +18,7 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "quarto", "tex", "text" },
   callback = function()
-    require("config.writing-mode").toggle()
+    require("config.writing-mode").enable()
   end,
 })
 
