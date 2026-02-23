@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local Snacks = require("snacks")
+
 -- System and Badic Configurations
 vim.keymap.set("n", "<leader>zh", function()
   Snacks.dashboard()
@@ -36,14 +38,24 @@ vim.keymap.set("n", "<leader>h", function()
 end, { desc = "Add hashtag before current word" })
 
 -- Toggle Completion
-vim.keymap.set("n", "<leader>zc", function()
-  vim.b.completion_enabled = not vim.b.completion_enabled
-  if vim.b.completion_enabled == false then
-    print("Completion Disabled")
-  else
-    print("Completion Enabled")
-  end
-end, { desc = "Toggle Blink Completion" })
+vim.g.blink_enabled = true -- Default to enabled
+Snacks.toggle
+  .new({
+    name = "Blink Completion",
+    get = function()
+      return vim.g.blink_enabled ~= false
+    end,
+    set = function(state)
+      vim.g.blink_enabled = state
+      if not state then
+        -- Hide menu immediately if disabling
+        pcall(function()
+          require("blink.cmp").hide()
+        end)
+      end
+    end,
+  })
+  :map("<leader>zb") -- Map to 'UI Blink'
 
 -- Quarto config
 local runner = require("quarto.runner")
