@@ -14,6 +14,7 @@ if vim.g.neovide then
     vim.cmd("cd D:/blog/")
   end
   vim.o.guifont = "Iosevka Nerd Font Mono,IosevkaTermSlab Nerd Font Mono,JetBrainsMono Nerd Font Mono:h14"
+  vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
 else
   vim.o.guifont =
     "Iosevka Nerd Font Mono,IosevkaTermSlab Nerd Font Mono,Inter,JetBrainsMono Nerd Font Mono,Symbols Nerd Font Mono:h14"
