@@ -21,7 +21,9 @@ return {
         win._number = vim.wo.number
         win._relativenumber = vim.wo.relativenumber
         win._completion = vim.b.completion_enabled
+        win._wrap = vim.wo.wrap
 
+        vim.wo.wrap = true
         vim.wo.number = false
         vim.wo.relativenumber = false
         vim.b.completion_enabled = false
@@ -41,6 +43,9 @@ return {
         end
         if win._relativenumber ~= nil then
           vim.wo.relativenumber = win._relativenumber
+        end
+        if win._wrap ~= nil then
+          vim.wo.wrap = win._wrap
         end
         pcall(function()
           vim.opt.linespace = 2
