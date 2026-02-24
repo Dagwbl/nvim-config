@@ -64,7 +64,7 @@ return {
       },
       markdown = {
         enabled = true,
-        filetypes = { "markdown", "mdx", "quarto", "rmd", "qmd" },
+        filetypes = { "markdown", "mdx", "quarto", "rmd" },
       },
     },
     explorer = {

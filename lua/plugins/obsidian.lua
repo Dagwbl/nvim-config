@@ -1,3 +1,4 @@
+local hostname = vim.uv.os_gethostname()
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
@@ -19,27 +20,20 @@ return {
     --     { "<leader>oo", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian" },
   },
 
-  -- lazy.nvim command definitions (updated to new format)
-  cmd = {
-    "Obsidian",
-  },
-
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {
-    -- Disable legacy commands (using new format now)
     legacy_commands = false,
-    ui = {
-      enable = false,
-    },
-    -- 工作区配置
     workspaces = {
       {
-        name = "blog",
-        path = "D:/blog",
+        name = "Home",
+        path = "D:/blog", -- Path for your work machine
+      },
+      {
+        name = "Office",
+        path = "D:/A/Jeapo's blog", -- Path for your home machine
       },
     },
-
     -- 新笔记存放位置
     notes_subdir = "content/posts/note",
 

@@ -18,16 +18,18 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "quarto", "tex", "text" },
   callback = function()
-    -- vim.schedule(function()
-    -- vim.opt_local.wrap = true
-    -- vim.opt_local.spell = true
     Snacks.zen()
-    -- end)
   end,
 })
 
--- vim.api.nvim_create_autocmd("BufEnter", {
---   callback = function()
---     vim.b.completion_enabled = false
---   end,
--- })
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("quarto_highlights"),
+  pattern = { "quarto" },
+  callback = function()
+    vim.api.nvim_set_hl(0, "QuartoRef", { fg = "#995AEF", bold = true })
+    vim.fn.matchadd("QuartoRef", [=[@\(fig\|tbl\|sec\|eq\)-[[:alnum:]_]\+]=])
+  end,
+})

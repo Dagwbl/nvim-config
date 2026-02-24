@@ -3,7 +3,6 @@ return {
   {
     "quarto-dev/quarto-nvim",
     dependencies = {
-      "quarto-dev/quarto-nvim",
       "jmbuhr/otter.nvim",
     },
     opts = {
