@@ -12,21 +12,28 @@ return {
       },
     },
     opts = {
-      -- Use the "super-tab" preset for VS Code-like behavior
       keymap = { preset = "super-tab" },
       enabled = function()
-        return not vim.tbl_contains({ "markdown", "quarto", "txt" }, vim.bo.filetype)
-          -- and vim.bo.buftype ~= "prompt"
-          and vim.g.blink_enabled ~= false
+        return vim.g.blink_enabled
       end,
 
       sources = {
-        default = { "avante" },
         providers = {
           avante = {
             module = "blink-cmp-avante",
             name = "Avante",
           },
+        },
+        default = {
+          "buffer",
+          "path",
+          "lsp",
+          "snippets",
+          "avante", -- 保留给代码文件
+        },
+        per_filetype = {
+          markdown = { "lsp", "path" }, -- "buffer" removed
+          quarto = { "lsp", "path" }, -- "buffer" removed
         },
       },
     },
