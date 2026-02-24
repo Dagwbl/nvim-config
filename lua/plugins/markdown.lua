@@ -11,6 +11,9 @@ return {
       checkbox = {
         enabled = true,
       },
+      yaml = {
+        enabled = false,
+      },
       latex = {
         enabled = false,
       },
