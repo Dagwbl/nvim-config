@@ -11,13 +11,16 @@ if hostname == "R7000" then
   my_paths = {
     project_root = "~/projects/work",
     term_path = "cd D:/blog/",
-    zotero_bib = "D:/UA/Winter-2026/Zotero.bib",
+    zotero_bib = "D:/UA/Winter-2026/references.bib",
+    zotero_sqlite = "C:/Users/jeapo/Zotero/zotero.sqlite",
   }
 elseif hostname == "WVLIU-GD15" then
   my_paths = {
     project_root = "~/personal/code",
     term_path = "cd D:/jinpeng6/Documents/Course/Winter-2026/",
-    zotero_bib = "D:/jinpeng6/Documents/Course/Winter-2026/Zotero.bib",
+    zotero_bib = "D:/jinpeng6/Documents/Course/Winter-2026/references.bib",
+    zotero_sqlite = "C:/Users/jinpeng6/Zotero/zotero.sqlite",
+    zotero_storage = "C:/Users/jinpeng6/Zotero/storage/",
   }
 else
 end
@@ -26,7 +29,6 @@ vim.g.my_paths = my_paths
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true
-vim.opt.spell = true
 
 if vim.g.neovide then
   vim.cmd(vim.g.my_paths.term_path)
