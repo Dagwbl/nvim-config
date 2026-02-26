@@ -24,6 +24,18 @@ return {
   ---@type obsidian.config
   opts = {
     legacy_commands = false,
+    frontmatter = {
+      enabled = false,
+      func = function(note)
+        local out = {}
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+        return out
+      end,
+    },
     workspaces = {
       {
         name = "Home",
