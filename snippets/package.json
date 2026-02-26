@@ -2,7 +2,9 @@
   "name": "personal-snippets",
   "contributes": {
     "snippets": [
-      { "language": "markdown", "path": "./hugo-shortcodes.json" }
+      { "language": "markdown", "path": "./hugo.json" },
+      { "language": "markdown", "path": "./quarto.json" },
+      { "language": "quarto", "path": "./quarto.json" }
     ]
   }
 }
