@@ -12,8 +12,10 @@
   "Hugo Shortcode: Encrypt": {
     "prefix": "@hg-encrypt",
     "body": [
-      "{{< encrypt${1: hint=\"${2:Original Draft}\"} >}}",
       "$0",
+      "",
+      "{{< encrypt${1: hint=\"${2:Original Draft}\"} >}}",
+      "$3",
       "{{< /encrypt >}}"
     ],
     "description": "Insert encrypted content block (Backspace to use default hint)"
