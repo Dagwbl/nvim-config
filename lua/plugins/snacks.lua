@@ -28,7 +28,7 @@ return {
         vim.wo.relativenumber = false
         vim.b.completion_enabled = false
         pcall(function()
-          vim.opt.linespace = 8
+          vim.opt.linespace = 4
         end)
         pcall(function()
           vim.opt.foldcolumn = "2"

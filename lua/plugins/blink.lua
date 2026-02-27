@@ -115,6 +115,7 @@ return {
             module = "blink.compat.source",
             opts = {
               source_name = "latex_symbols",
+              strategy = 2, --insert latex rather than symbol
             },
           },
           latex = {
