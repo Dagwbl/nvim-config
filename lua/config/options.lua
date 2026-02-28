@@ -29,6 +29,7 @@ vim.g.my_paths = my_paths
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true
+vim.opt.spelllang = { "en", "cjk" }
 
 if vim.g.neovide then
   vim.cmd(vim.g.my_paths.term_path)

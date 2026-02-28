@@ -10,6 +10,7 @@ return {
       },
       zen = {
         backdrop = { transparent = false, blend = 90 },
+        width = 95,
       },
     },
     zen = {
@@ -20,15 +21,18 @@ return {
       on_open = function(win)
         win._number = vim.wo.number
         win._relativenumber = vim.wo.relativenumber
-        win._completion = vim.b.completion_enabled
+        win._completion = vim.g.blink_enabled
         win._wrap = vim.wo.wrap
 
         vim.wo.wrap = true
         vim.wo.number = false
         vim.wo.relativenumber = false
-        vim.b.completion_enabled = false
+        vim.g.blink_enabled = false
         pcall(function()
-          vim.opt.linespace = 4
+          require("blink.cmp").hide()
+        end)
+        pcall(function()
+          vim.opt.linespace = 3
         end)
         pcall(function()
           vim.opt.foldcolumn = "2"
@@ -36,7 +40,7 @@ return {
       end,
       on_close = function(win)
         if win._completion ~= nil then
-          vim.b.completion_enabled = win._completion
+          vim.g.blink_enabled = win._completion
         end
         if win._number ~= nil then
           vim.wo.number = win._number
