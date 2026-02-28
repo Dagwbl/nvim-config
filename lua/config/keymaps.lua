@@ -67,3 +67,18 @@ vim.keymap.set("v", "<leader>r", runner.run_range, { desc = "run visual range", 
 vim.keymap.set("n", "<leader>r%", function()
   runner.run_all(true)
 end, { desc = "run all cells of all languages", silent = true })
+
+-- Toggle Night/Day Theme (Catppuccin)
+vim.keymap.set("n", "<leader>zT", function()
+  if vim.o.background == "light" then
+    vim.o.background = "dark"
+    -- vim.notify("Dark Mode", vim.log.levels.INFO, { title = "Theme" })
+  else
+    vim.o.background = "light"
+    -- vim.notify("Light Mode", vim.log.levels.INFO, { title = "Theme" })
+  end
+end, { desc = "Toggle Dark/Light Mode" })
+
+vim.keymap.set("n", "<leader>uz", function()
+  Snacks.zen()
+end, { desc = "Toggle Zen Mode" })
