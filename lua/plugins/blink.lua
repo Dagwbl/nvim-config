@@ -9,17 +9,17 @@ return {
       {
         "L3MON4D3/LuaSnip",
         opts = {
-          history = false,
-          update_events = "TextChanged,TextChangedI",
+          -- history = false,
+          -- update_events = "TextChanged,TextChangedI",
         },
         config = function(_, opts)
           require("luasnip").setup(opts)
           require("luasnip.loaders.from_vscode").lazy_load({
             paths = { vim.fn.stdpath("config") .. "/snippets" },
           })
-          require("luasnip.loaders.from_vscode").lazy_load({
-            exclude = { "markdown", "quarto", "all" },
-          })
+          -- require("luasnip.loaders.from_vscode").lazy_load({
+          --   exclude = { "markdown", "quarto", "all" },
+          -- })
         end,
       },
       {
@@ -52,44 +52,44 @@ return {
       enabled = function()
         return vim.g.blink_enabled ~= false
       end,
-      snippets = { preset = "luasnip" },
       sources = {
         providers = {
           avante = {
             module = "blink-cmp-avante",
             name = "Avante",
           },
-          snippets = {
-            name = "Snippets",
-            module = "blink.cmp.sources.snippets",
-            transform_items = function(_, items)
-              local ft = vim.bo.filetype
-              local is_md = (ft == "markdown" or ft == "quarto")
-
-              local col = vim.api.nvim_win_get_cursor(0)[2]
-              local line = vim.api.nvim_get_current_line()
-              local text_before_cursor = string.sub(line, 1, col)
-              local is_typing_at = string.match(text_before_cursor, "@[%w_-]*$") ~= nil
-
-              return vim.tbl_filter(function(item)
-                local label = item.label or ""
-                -- 64 就是 '@' 的 ASCII 码，这比 string.sub(label, 1, 1) 快非常多
-                local is_custom_at = (string.byte(label, 1) == 64)
-
-                if is_md then
-                  if is_custom_at then
-                    return is_typing_at
-                  end
-                  return false
-                else
-                  if is_custom_at then
-                    return is_typing_at
-                  end
-                  return true
-                end
-              end, items)
-            end,
-          },
+          -- snippets = { preset = "luasnip" },
+          -- snippets = {
+          --   name = "Snippets",
+          --   module = "blink.cmp.sources.snippets",
+          --   transform_items = function(_, items)
+          --     local ft = vim.bo.filetype
+          --     local is_md = (ft == "markdown" or ft == "quarto")
+          --
+          --     local col = vim.api.nvim_win_get_cursor(0)[2]
+          --     local line = vim.api.nvim_get_current_line()
+          --     local text_before_cursor = string.sub(line, 1, col)
+          --     local is_typing_at = string.match(text_before_cursor, "@[%w_-]*$") ~= nil
+          --
+          --     return vim.tbl_filter(function(item)
+          --       local label = item.label or ""
+          --       -- 64 就是 '@' 的 ASCII 码，这比 string.sub(label, 1, 1) 快非常多
+          --       local is_custom_at = (string.byte(label, 1) == 64)
+          --
+          --       if is_md then
+          --         if is_custom_at then
+          --           return is_typing_at
+          --         end
+          --         return false
+          --       else
+          --         if is_custom_at then
+          --           return is_typing_at
+          --         end
+          --         return true
+          --       end
+          --     end, items)
+          --   end,
+          -- },
           emoji = {
             module = "blink-emoji",
             name = "Emoji",

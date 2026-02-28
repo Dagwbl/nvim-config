@@ -48,12 +48,5 @@
       "$0"
     ],
     "description": "Insert image with caption and label"
-  },
-  "Cross Reference": {
-    "prefix": "@ref",
-    "body": [
-      "@${1|eq-,fig-,tbl-,sec-,def-|}${2:label}$0"
-    ],
-    "description": "Insert cross-reference (@eq-, @fig-, etc.)"
   }
 }
