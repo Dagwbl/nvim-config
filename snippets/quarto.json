@@ -1,42 +1,11 @@
 {
-  "Code Block": {
-    "prefix": "cblk",
-    "body": [
-      "```{${1:python}}",
-      "$2",
-      "```",
-      "$0"
-    ],
-    "description": "Insert executable code block"
-  },
   "Math Block (Equation)": {
     "prefix": "eqblk",
     "body": [
       "\\$\\$",
-      "$2",
-      "\\$\\$ {#eq-${1:label}}",
-      "$0"
+      "$1",
+      "\\$\\$ $0"
     ],
-    "description": "Standalone equation block with cross-reference label"
-  },
-
-  "Callout": {
-    "prefix": "callout",
-    "body": [
-      "::: {.callout-${1|note,warning,important,tip,caution|}}",
-      "## ${2:Callout Title}",
-      "$3",
-      ":::",
-      "$0"
-    ],
-    "description": "Insert callout block"
-  },
-  "Figure": {
-    "prefix": "fig",
-    "body": [
-      "![${1:Figure caption}](${2:image.png}){#fig-${3:label}}",
-      "$0"
-    ],
-    "description": "Insert image with caption and label"
+    "description": "Math Block"
   }
 }
