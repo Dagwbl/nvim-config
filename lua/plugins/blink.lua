@@ -1,34 +1,30 @@
 return {
   {
-    "rafamadriz/friendly-snippets",
-    lazy = true,
-  },
-  {
     "saghen/blink.cmp",
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
+        dependencies = { { "rafamadriz/friendly-snippets" } },
         opts = {
           -- history = false,
           -- update_events = "TextChanged,TextChangedI",
         },
         config = function(_, opts)
-          require("luasnip").setup(opts)
+          local luasnip = require("luasnip")
+          luasnip.setup(opts)
+          require("luasnip.loaders.from_vscode").lazy_load()
           require("luasnip.loaders.from_vscode").lazy_load({
             paths = { vim.fn.stdpath("config") .. "/snippets" },
           })
           -- require("luasnip.loaders.from_vscode").lazy_load({
           --   exclude = { "markdown", "quarto", "all" },
           -- })
+          luasnip.filetype_extend("markdown", { "tex", "latex" })
+          luasnip.filetype_extend("quarto", { "tex", "latex" })
         end,
       },
       {
         "krissen/blink-cmp-bibtex",
-      },
-      {
-        "saghen/blink.compat",
-        dev = false,
-        opts = { impersonate_nvim_cmp = false, enable_events = true },
       },
       {
         "jmbuhr/cmp-pandoc-references",
@@ -36,7 +32,6 @@ return {
         ft = { "quarto", "markdown", "rmarkdown" },
       },
       { "moyiz/blink-emoji.nvim" },
-      { "kdheepak/cmp-latex-symbols" },
       { "erooke/blink-cmp-latex" },
     },
     opts = {
@@ -52,13 +47,17 @@ return {
       enabled = function()
         return vim.g.blink_enabled ~= false
       end,
+      snippets = { preset = "luasnip" },
       sources = {
         providers = {
           avante = {
             module = "blink-cmp-avante",
             name = "Avante",
           },
-          -- snippets = { preset = "luasnip" },
+          snippets = {
+            name = "snippets",
+            module = "blink.cmp.sources.snippets",
+          },
           -- snippets = {
           --   name = "Snippets",
           --   module = "blink.cmp.sources.snippets",
@@ -117,14 +116,6 @@ return {
             module = "cmp-pandoc-references.blink",
             score_offset = 300,
           },
-          latex_symbols = {
-            name = "latex_symbols",
-            module = "blink.compat.source",
-            opts = {
-              source_name = "latex_symbols",
-              strategy = 2, --insert latex rather than symbol
-            },
-          },
           latex = {
             name = "Latex",
             module = "blink-cmp-latex",
@@ -134,7 +125,7 @@ return {
                   scope = "local",
                   buf = ctx.bufnr,
                 })
-                if ft == "tex" or ft == "latex" then
+                if ft == "tex" or ft == "latex" or ft == "markdown" or ft == "quarto" then
                   return true
                 end
                 return false
@@ -145,8 +136,8 @@ return {
         default = { "lsp", "path", "snippets", "buffer", "avante" },
 
         per_filetype = {
-          markdown = { "lsp", "path", "references", "latex_symbols", "emoji", "latex", "bibtex", "snippets" },
-          quarto = { "lsp", "path", "references", "latex_symbols", "emoji", "latex", "bibtex", "snippets" },
+          markdown = { "lsp", "path", "references", "emoji", "bibtex", "snippets", "latex" },
+          quarto = { "lsp", "path", "references", "emoji", "bibtex", "snippets", "latex" },
         },
       },
     },
