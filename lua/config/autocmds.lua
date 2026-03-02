@@ -26,3 +26,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd([[syntax match QuartoRef /@\(fig\|tbl\|sec\|eq\)-[[:alnum:]_-]\+/]])
   end,
 })
+
+vim.api.nvim_create_user_command("GitPush", function()
+  require("utils.push_today").push_current_file()
+end, { desc = "Push current file" })

@@ -23,14 +23,19 @@ return {
         win._relativenumber = vim.wo.relativenumber
         win._completion = vim.g.blink_enabled
         win._wrap = vim.wo.wrap
+        win._neovide_fullscreen = vim.g.neovide_fullscreen
 
         vim.wo.wrap = true
         vim.wo.number = false
         vim.wo.relativenumber = false
         vim.g.blink_enabled = false
+        if vim.g.neovide then
+          vim.g.neovide_fullscreen = true
+        end
         pcall(function()
           require("blink.cmp").hide()
         end)
+
         pcall(function()
           vim.opt.linespace = 3
         end)
@@ -50,6 +55,9 @@ return {
         end
         if win._wrap ~= nil then
           vim.wo.wrap = win._wrap
+        end
+        if vim.g.neovide and win._neovide_fullscreen ~= nil then
+          vim.g.neovide_fullscreen = win._neovide_fullscreen
         end
         pcall(function()
           vim.opt.linespace = 2

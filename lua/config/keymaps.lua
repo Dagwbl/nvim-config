@@ -82,3 +82,7 @@ end, { desc = "Toggle Dark/Light Mode" })
 vim.keymap.set("n", "<leader>uz", function()
   Snacks.zen()
 end, { desc = "Toggle Zen Mode" })
+
+vim.keymap.set("n", "<leader>zP", function()
+  require("utils.push_today").push_current_file()
+end, { desc = "Push Current File" })
