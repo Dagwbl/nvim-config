@@ -12,7 +12,7 @@ return {
       closePreviewOnExit = true,
       lspFeatures = {
         enabled = true,
-        chunks = "curly",
+        chunks = "all", -- curly
         languages = { "r", "python", "julia", "bash", "html" },
         diagnostics = {
           enabled = true,

@@ -7,9 +7,17 @@ return {
     },
     ft = { "markdown", "quarto", "Avante" }, -- Load for both markdown and quarto filetypes
     opts = {
+      render_modes = { "n", "c", "i", "v" },
       file_types = { "markdown", "Avante", "quarto" }, -- Ensure quarto is included
       checkbox = {
         enabled = true,
+        custom = {
+          todo = { raw = "[-]", rendered = "󰔚", highlight = "RenderMarkdownTodo" },
+          question = { raw = "[?]", rendered = "", highlight = "RenderMarkdownWarn" },
+          important = { raw = "[!]", rendered = "", highlight = "RenderMarkdownError" },
+          info = { raw = "[i]", rendered = " ", highlight = "RenderMarkdownInfo" },
+          cancelled = { raw = "[/]", rendered = "󰗨", highlight = "RenderMarkdownHint" },
+        },
       },
       yaml = {
         enabled = false,
