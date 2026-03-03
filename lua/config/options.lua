@@ -30,11 +30,13 @@ vim.g.my_paths = my_paths
 vim.opt.mouse = "a"
 vim.opt.wrap = true
 vim.opt.spelllang = { "en", "cjk" }
-
+vim.opt.guicursor:append("i-ci-ve:ver25-blinkwait500-blinkoff1000-blinkon1000")
 if vim.g.neovide then
   vim.cmd(vim.g.my_paths.term_path)
   vim.o.guifont = "Iosevka Nerd Font Mono,IosevkaTermSlab Nerd Font Mono,JetBrainsMono Nerd Font Mono:h12"
   vim.api.nvim_set_keymap("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_cursor_smooth_blink = true
 else
   vim.o.guifont =
     "Iosevka Nerd Font Mono,IosevkaTermSlab Nerd Font Mono,Inter,JetBrainsMono Nerd Font Mono,Symbols Nerd Font Mono:h12"

@@ -11,8 +11,13 @@ return {
     },
     opts = {
       providers = {
-        priority = { "lsp", "markdown", "treesitter" },
+        priority = { "lsp", "norg", "markdown", "treesitter", "man" },
+        markdown = { "markdown", "quarto" },
       },
+      outline_window = {
+        position = "left",
+      },
+      auto_jump = true,
     },
   },
 }

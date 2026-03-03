@@ -40,10 +40,10 @@ return {
             opts = {
               friendly_snippets = true,
               search_paths = { vim.fn.stdpath("config") .. "/snippets" },
-              extended_filetypes = {
-                markdown = { "tex", "latex" },
-                quarto = { "tex", "latex" },
-              },
+              -- extended_filetypes = {
+              --   markdown = { "tex" },
+              --   quarto = { "tex" },
+              -- },
             },
           },
 
