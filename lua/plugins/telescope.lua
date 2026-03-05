@@ -4,6 +4,7 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       { "nvim-telescope/telescope-dap.nvim" },
+      { "nvim-telescope/telescope-bibtex.nvim" },
       -- {
       --   "jmbuhr/telescope-zotero.nvim", -- this and zotcite doesn't support zwtero 8
       --   dev = false,
@@ -33,32 +34,46 @@ return {
       --     vim.keymap.set("n", "<leader>fz", ":Telescope zotero<cr>", { desc = "[z]otero" })
       --   end,
       -- },
+    },
+    keys = {
+      { "<leader>fb", "<cmd>Telescope bibtex<CR>", desc = "[b]ibtex" },
       {
-        "nvim-telescope/telescope-bibtex.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim" },
-        keys = {
-          { "<leader>fb", "<cmd>Telescope bibtex<CR>", desc = "[b]ibtex" },
-          { "<C-b>", "<cmd>Telescope bibtex<CR>", mode = "i", desc = "Insert [b]ibtex" },
-        },
-        config = function()
-          require("telescope").setup({
-            extensions = {
-              bibtex = {
-                bibfiles = {
-                  vim.g.my_paths.zotero_bib,
-                },
-                citation_format = "{{citekey}}",
-                -- custom_formats = {
-                --   { id = "myCoolFormat", cite_marker = "#%s#" },
-                -- },
-                format = "markdown",
-              },
-            },
-          })
-
-          require("telescope").load_extension("bibtex")
+        "<C-S-i>",
+        function()
+          vim.cmd("stopinsert")
+          vim.schedule(function()
+            require("telescope").extensions.bibtex.bibtex()
+          end)
         end,
+        mode = "i",
+        desc = "Insert BibTeX",
       },
     },
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup({
+        defaults = {},
+        extensions = {
+          bibtex = {
+            global_files = { vim.g.my_paths.zotero_bib },
+            context = true,
+            context_fallback = true,
+            citation_format = "{{citekey}}",
+            format = "quarto",
+          },
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          },
+        },
+      })
+
+      telescope.load_extension("fzf")
+      telescope.load_extension("dap")
+      telescope.load_extension("bibtex")
+      -- telescope.load_extension("zotero")
+    end,
   },
 }

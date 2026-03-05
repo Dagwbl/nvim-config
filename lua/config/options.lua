@@ -26,6 +26,7 @@ else
 end
 
 vim.g.my_paths = my_paths
+vim.g.blink_enabled = false
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true

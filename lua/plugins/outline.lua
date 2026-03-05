@@ -11,9 +11,12 @@ return {
     },
     opts = {
       providers = {
-        priority = { "markdown", "lsp", "norg", "treesitter", "man" },
+        priority = { "lsp", "markdown", "norg", "treesitter", "man" },
         markdown = {
-          filetypes = { "markdown", "quarto" },
+          filetypes = { "markdown", "quarto", "rmd" },
+        },
+        treesitter = {
+          filetypes = { "quarto", "markdown" },
         },
       },
       outline_window = {
@@ -29,13 +32,14 @@ return {
           end
           return false
         end,
+        filter = { "String", "Function", "Class", "Module" },
       },
       outline_items = {
         show_symbol_details = false,
         auto_set_cursor = true,
       },
       guides = {
-        enabled = true,
+        enabled = false,
         markers = {
           bottom = "\u{2570}", --  ╰
           middle = "\u{251c}", --  ├
