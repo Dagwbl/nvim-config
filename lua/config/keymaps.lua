@@ -38,15 +38,15 @@ vim.keymap.set("n", "<leader>h", function()
 end, { desc = "Add hashtag before current word" })
 
 -- Toggle Completion
-vim.g.blink_enabled = true -- Default to enabled
+vim.g.ghost_text_enabled = false
 Snacks.toggle
   .new({
-    name = "Blink Completion",
+    name = "Ghost Text",
     get = function()
-      return vim.g.blink_enabled ~= false
+      return vim.g.ghost_text_enabled ~= false
     end,
     set = function(state)
-      vim.g.blink_enabled = state
+      vim.g.ghost_text_enabled = state
       if not state then
         -- Hide menu immediately if disabling
         pcall(function()

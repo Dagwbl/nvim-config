@@ -26,7 +26,7 @@ else
 end
 
 vim.g.my_paths = my_paths
-vim.g.blink_enabled = false
+vim.g.writing_ft = { markdown = true, quarto = true }
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true

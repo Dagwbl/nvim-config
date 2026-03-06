@@ -16,7 +16,19 @@ return {
     },
     opts = {
       completion = {
-        menu = { auto_show = true },
+        menu = {
+          auto_show = function(ctx, items)
+            return not vim.g.writing_ft[vim.bo.filetype]
+          end,
+          auto_show_delay_ms = function(ctx, items)
+            return vim.g.writing_ft[vim.bo.filetype] and 1000 or 0
+          end,
+        },
+        ghost_text = {
+          enabled = function()
+            return vim.g.ghost_text_enabled ~= false
+          end,
+        },
       },
       keymap = {
         preset = "default",
@@ -24,16 +36,15 @@ return {
         ["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
       },
-      enabled = function()
-        return vim.g.blink_enabled ~= false
-      end,
+      -- enabled = function()
+      --   return vim.g.blink_enabled ~= false
+      -- end,
       sources = {
         providers = {
           avante = {
             module = "blink-cmp-avante",
             name = "Avante",
           },
-
           snippets = {
             name = "snippets",
             module = "blink.cmp.sources.snippets",
