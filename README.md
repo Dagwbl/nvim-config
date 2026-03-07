@@ -1,66 +1,101 @@
-# Todo
+# 🚀 Personal Neovim Configuration
 
-TODO: `norm` command
+A customized [LazyVim](https://github.com/LazyVim/LazyVim) setup tailored for **Academic Writing**, **Data Science (Quarto)**, and **Personal Knowledge Management (Obsidian)**.
 
+## 📚 Core Focus
+- **Academic Workflow:** Deep integration with Zotero for citations and Quarto for reproducible research.
+- **Knowledge Management:** Optimized Obsidian integration with custom directory structures for daily notes.
+- **Modal Efficiency:** A strict "No Arrow Keys" philosophy, utilizing advanced Vim motions and custom helpers.
+- **AI-Powered:** Agentic editing with `avante.nvim`.
 
-# 💤 LazyVim
+## 🛠️ Key Technology Stack
+- **Framework:** LazyVim (Plugin management via `lazy.nvim`).
+- **Writing:** `quarto-nvim`, `obsidian.nvim`, `zotcite`, `markdowny.lua`.
+- **AI:** `avante.nvim` (configured with Copilot/Claude).
+- **UI & Utils:** `snacks.nvim` (Dashboard, Terminal, Zen Mode), `blink.cmp` (Completion), `neovide` (GUI support).
+- **Navigation:** `smart-splits.nvim`, `telescope.nvim`.
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+## ⌨️ Custom Keybindings
 
-# Learning note
+### The `<leader>z` System Menu
+Most personal and system-level shortcuts are prefixed with `<leader>z`.
 
-## `g` means Go to
+| Keymap | Action |
+| --- | --- |
+| `<leader>zh` | Open Home Dashboard (Snacks) |
+| `<leader>zs` | Show current file in Windows Explorer |
+| `<leader>zo` | Open current file in default system app |
+| `<leader>zc` | Search/Insert Zotero citations |
+| `<leader>zp` | Toggle Quarto Preview |
+| `<leader>zT` | Toggle Dark/Light Mode (Catppuccin) |
+| `<leader>zP` | Push current file to Git (custom utility) |
+| `<leader>zb` | Toggle Blink Ghost Text |
 
-- `gi`: Got to the last place you entered Insert mode.
--
+### Editing & Navigation
+- **Escape:** `jk` or `jj` in Insert mode.
+- **One-shot Normal:** `;;` in Insert mode to execute a single command.
+- **Hashtag:** `<leader>h` adds a `#` before the current word (useful for tagging).
+- **Zen Mode:** `<leader>uz` to toggle focus mode.
 
-## Z Mode
+---
 
-The `z` menu mode is an eclectic mix of cursor positioning, code folding, and random command.
+## 🧠 Neovim Concepts & Cheatsheet
 
-**NEVER USE THE ARROW KEYS TO MOVE THE CURSOR.**
+### 1. The Grammar of Vim (Verb + Adjective + Noun)
+Vim is a language. Once you learn the grammar, you don't memorize shortcuts; you speak to the editor.
 
-But recognize that if you ever have to push these keys more than twice in succession to move the cursor, you’re wasting keystrokes.
+- **Verbs (Operators):** `d` (delete), `c` (change), `y` (yank/copy), `v` (visual select).
+- **Adjectives (Text Objects):** `i` (inner), `a` (around).
+- **Nouns:** `w` (word), `s` (sentence), `p` (paragraph), `t` (tag), `"` (quotes), `(` (parentheses), `b` (block).
+
+*Example:* `ci"` means "Change Inside Quotes". `dap` means "Delete Around Paragraph".
+
+### 2. Powerful Text Objects
+| Object | Description |
+| --- | --- |
+| `it` / `at` | Inner/Around HTML/XML Tag |
+| `i"` / `a"` | Inner/Around Double Quotes |
+| `i(` / `a(` | Inner/Around Parentheses |
+| `ip` / `ap` | Inner/Around Paragraph |
+
+### 3. Essential Power-User Commands
+| Command | Effect |
+| --- | --- |
+| `.` | **The Dot Command:** Repeat the last change. The most powerful key in Vim. |
+| `*` / `#` | Search for the word under the cursor (forward/backward). |
+| `gv` | Re-select the last visual selection. |
+| `gx` | Open the link/file under the cursor. |
+| `Ctrl-v` | Visual Block mode (great for multi-line prepending). |
+| `:%s/old/new/gc` | Search and replace in the whole file with confirmation. |
+
+### 4. Macros: Automating Repetition
+1. `qa`: Start recording into register `a`.
+2. *Perform your actions.*
+3. `q`: Stop recording.
+4. `@a`: Play back the macro in register `a`.
+5. `@@`: Play back the last used macro.
+
+---
+
+## 📂 Structure
+- `lua/config/`: Core settings (`options.lua`, `keymaps.lua`).
+- `lua/plugins/`: Modular plugin specifications.
+- `lua/utils/`: Custom scripts (e.g., Git pushing, dynamic diary paths).
+- `snippets/`: Custom completions for Quarto and Hugo.
+
+## 🖥️ Environment Support
+This config uses host-specific path detection in `options.lua` to handle different environments (e.g., `R7000` vs `WVLIU-GD15`), ensuring Zotero databases and project roots are always correctly mapped.
+
+---
+
+## 💡 Learning Notes
+
+### Z Mode & Modal Editing
+*The `z` menu is for cursor positioning, folding, and navigation. If you have to push a key more than twice to move, you’re wasting keystrokes.*
 
 - `ge`: Go to end of previous word.
-- `C-i`: To jump forward in history.
-- `C-o` To jump forward in history
-
-For example, if you are editing text rather than source code, you will find it useful to be able to navigate by sentences and paragraphs. Lzayvim further amends this collection of motions with other powerful navigation capabilities powered by a variety of plugins.
-
-- `(`/`)`: Jump to a previous/next sentence.
-- `{`/`}`: Jump to a previous/next blank line.
-- `[{`/`]}`: Jump out to the beginning/end of the `{}`.
-
-
-TODO:
-
-FIXME: 
-
-We can use `[t/]t` to jump to previous/next TODO or FIXME tag.
-
-Seeking surrounding objects.
-
-CTRL + '/' to open the terminal in the current directory.
-R: replace mode
-
-Next, type another / to separate the pattern from the replacement, and then type whatever string you want to replace it with. LazyVim will live update all instances of the search term with the replacement term so you can preview what it will look like. Here, I’m going to replace pattern with FOOBAR:
-
-
-1.
-1.
-1.
-1.
-1.
-1.
-1.
-1.
-1.
-1.
-
-Chapter 1: Intro
-Chapter 2: Install
-Chapter 2: 1 Weird modal editing trick
-Chapter 3: The numbered marks 1-9
-Chapter 4: Navigating things
+- `C-i` / `C-o`: Jump forward/backward in jump history.
+- `(`/`)`: Jump by sentences.
+- `{`/`}`: Jump by blank lines.
+- `[t` / `]t`: Jump to previous/next TODO or FIXME.
+- `gi`: Go to the last place you entered Insert mode.

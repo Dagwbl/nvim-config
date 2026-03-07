@@ -3,14 +3,9 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "rafamadriz/friendly-snippets",
-      {
-        "krissen/blink-cmp-bibtex",
-      },
-      {
-        "jmbuhr/cmp-pandoc-references",
-        dev = false,
-        ft = { "quarto", "markdown", "rmarkdown" },
-      },
+      { "krissen/blink-cmp-bibtex" },
+      { "Kaiser-Yang/blink-cmp-avante" },
+      { "jmbuhr/cmp-pandoc-references", dev = false, ft = { "quarto", "markdown", "rmarkdown" } },
       { "moyiz/blink-emoji.nvim" },
       { "erooke/blink-cmp-latex" },
     },
@@ -43,7 +38,7 @@ return {
         providers = {
           avante = {
             module = "blink-cmp-avante",
-            name = "Avante",
+            name = "avante",
           },
           snippets = {
             name = "snippets",
