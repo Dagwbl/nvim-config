@@ -40,10 +40,7 @@ return {
       {
         "<C-S-i>",
         function()
-          vim.cmd("stopinsert")
-          vim.schedule(function()
-            require("telescope").extensions.bibtex.bibtex()
-          end)
+          require("telescope").extensions.bibtex.bibtex()
         end,
         mode = "i",
         desc = "Insert BibTeX",
@@ -52,14 +49,13 @@ return {
     config = function()
       local telescope = require("telescope")
       telescope.setup({
-        defaults = {},
         extensions = {
           bibtex = {
             global_files = { vim.g.my_paths.zotero_bib },
-            context = true,
+            context = false,
             context_fallback = true,
             citation_format = "{{citekey}}",
-            format = "quarto",
+            format = "markdown",
           },
           fzf = {
             fuzzy = true,
