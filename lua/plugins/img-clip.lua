@@ -5,6 +5,7 @@ return {
     -- add options here
     default = {
       dir_path = "assets",
+      use_absolute_path = false,
       relative_to_current_file = true,
       drag_and_drop = {
         enabled = true,

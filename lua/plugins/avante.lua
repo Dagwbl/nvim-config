@@ -7,7 +7,7 @@ return {
       "MunifTanjim/nui.nvim",
     },
     opts = {
-      behaviour = { auto_suggestions = true },
+      -- behaviour = { auto_suggestions = true },
       provider = "copilot",
       mode = "agentic",
       providers = {

@@ -36,10 +36,10 @@ return {
       -- end,
       sources = {
         providers = {
-          avante = {
-            module = "blink-cmp-avante",
-            name = "avante",
-          },
+          -- avante = {
+          --   module = "blink-cmp-avante",
+          --   name = "avante",
+          -- },
           snippets = {
             name = "snippets",
             module = "blink.cmp.sources.snippets",
@@ -98,7 +98,7 @@ return {
           },
         },
 
-        default = { "lsp", "path", "snippets", "buffer", "avante" },
+        default = { "lsp", "path", "snippets", "buffer" },
 
         per_filetype = {
           markdown = { "lsp", "path", "references", "emoji", "bibtex", "snippets", "latex" },
