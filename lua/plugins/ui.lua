@@ -1,14 +1,5 @@
 return {
   {
-    "folke/which-key.nvim",
-    opts = {
-      preset = "helix", -- "classic" is better for wide/multi-column layouts
-      spec = {
-        { "<leader>z", group = "custom" },
-      },
-    },
-  },
-  {
     "folke/snacks.nvim",
     opts = {
       dashboard = {
