@@ -30,6 +30,8 @@ vim.g.writing_ft = { markdown = true, quarto = true }
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 vim.opt.spelllang = { "en", "cjk" }
 vim.opt.guicursor:append("i-ci-ve:ver25-blinkwait500-blinkoff1000-blinkon1000")
 if vim.g.neovide then
