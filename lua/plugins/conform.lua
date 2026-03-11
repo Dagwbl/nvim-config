@@ -8,6 +8,11 @@ return {
         yaml = { "prettier" },
         json = { "prettier" },
       },
+      lsp_as_diagnostics = {
+        markdown = { "vale" },
+        quarto = { "vale" },
+      },
+      format_on_save = true,
     },
   },
 }
