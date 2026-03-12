@@ -15,6 +15,7 @@ if hostname == "R7000" then
     zotero_sqlite = "C:/Users/jeapo/Zotero/zotero.sqlite",
   }
 elseif hostname == "WVLIU-GD15" then
+  -- vim.env.JAVA_HOME = "C:/Program Files/Eclipse Adoptium/jdk-25.0.2.10-hotspot"
   my_paths = {
     project_root = "~/personal/code",
     term_path = "cd D:/jinpeng6/Documents/Course/Winter-2026/",

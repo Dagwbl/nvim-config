@@ -12,7 +12,6 @@ return {
         markdown = { "vale" },
         quarto = { "vale" },
       },
-      format_on_save = true,
     },
   },
 }

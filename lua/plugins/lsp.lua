@@ -1,21 +1,24 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function(_, opts)
-    opts.servers = opts.servers or {}
-    opts.servers["ltex"] = {
-      filetypes = { "markdown", "quarto", "tex", "bibtex" },
-      settings = {
-        ltex = {
-          language = "en-US",
-          checkFrequency = "save",
-          disabledRules = {
-            ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
-          },
-          additionalRules = {
-            enablePickyRules = false,
+  opts = {
+    diagnostics = {
+      update_in_insert = false,
+    },
+    servers = {
+      -- Rename 'ltex' to 'ltex_plus'
+      ltex_plus = {
+        enabled = false,
+        settings = {
+          ltex = { -- Note: The inner settings key usually remains 'ltex'
+            language = "en-US",
+            checkFrequency = "manual", -- This will now be correctly applied
+            disabledRules = {
+              ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
+            },
           },
         },
       },
-    }
-  end,
+      ltex = { enabled = false },
+    },
+  },
 }
