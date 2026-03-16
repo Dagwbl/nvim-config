@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>zo", function()
 end, { desc = "Open file in system" })
 
 -- Markdown, Quarto, Zotero
-vim.keymap.set("n", "<leader>zc", "<cmd>Telescope zotero<cr>", { desc = "Zotero citation" })
+vim.keymap.set("n", "<leader>zc", "<cmd>Telescope bibtex<CR>", { desc = "Zotero citation" })
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
 
 -- Delete buffers

@@ -15,9 +15,10 @@ return {
           auto_show = function(ctx, items)
             return not vim.g.writing_ft[vim.bo.filetype]
           end,
-          auto_show_delay_ms = function(ctx, items)
-            return vim.g.writing_ft[vim.bo.filetype] and 1000 or 0
-          end,
+          -- auto_show_delay_ms = function(ctx, items)
+          --   return vim.g.writing_ft[vim.bo.filetype] and 1000 or 0
+          -- end,
+          auto_show_delay_ms = 0,
         },
         ghost_text = {
           enabled = function()

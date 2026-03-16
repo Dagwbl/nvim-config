@@ -19,6 +19,15 @@ return {
         },
       },
       ltex = { enabled = false },
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      },
     },
   },
 }
