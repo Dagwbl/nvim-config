@@ -8,6 +8,7 @@ local Snacks = require("snacks")
 vim.keymap.set("n", "<leader>zh", function()
   Snacks.dashboard()
 end, { desc = "Home Dashboard" })
+vim.keymap.set("n", "<leader>zr", "<cmd>restart<cr>", { desc = "Restart" })
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
@@ -72,10 +73,8 @@ end, { desc = "run all cells of all languages", silent = true })
 vim.keymap.set("n", "<leader>zT", function()
   if vim.o.background == "light" then
     vim.o.background = "dark"
-    -- vim.notify("Dark Mode", vim.log.levels.INFO, { title = "Theme" })
   else
     vim.o.background = "light"
-    -- vim.notify("Light Mode", vim.log.levels.INFO, { title = "Theme" })
   end
 end, { desc = "Toggle Dark/Light Mode" })
 

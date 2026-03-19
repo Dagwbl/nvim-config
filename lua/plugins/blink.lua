@@ -10,6 +10,7 @@ return {
       { "erooke/blink-cmp-latex" },
     },
     opts = {
+      fuzzy = { implementation = "prefer_rust" },
       completion = {
         menu = {
           auto_show = function(ctx, items)

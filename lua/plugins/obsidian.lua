@@ -107,13 +107,8 @@ return {
         end,
       },
     },
-    -- 新笔记位置
-    new_notes_location = "notes_subdir",
 
-    -- Wiki 链接格式
-    preferred_link_style = "markdown",
-
-    -- 搜索配置
+    link = { style = "markdown" },
     search = {
       sort_by = "modified",
       sort_reversed = true,
