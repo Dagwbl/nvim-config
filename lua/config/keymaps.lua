@@ -8,7 +8,7 @@ local Snacks = require("snacks")
 vim.keymap.set("n", "<leader>zh", function()
   Snacks.dashboard()
 end, { desc = "Home Dashboard" })
-vim.keymap.set("n", "<leader>zr", "<cmd>restart<cr>", { desc = "Restart" })
+vim.keymap.set("n", "<leader>zR", "<cmd>restart<cr>", { desc = "Restart" })
 
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
@@ -20,8 +20,25 @@ vim.keymap.set("n", "<leader>zo", function()
 end, { desc = "Open file in system" })
 
 -- Markdown, Quarto, Zotero
-vim.keymap.set("n", "<leader>zc", "<cmd>Telescope bibtex<CR>", { desc = "Zotero citation" })
+vim.keymap.set("n", "<leader>zc", "<cmd>Telescope bibtex<CR>", { desc = "Bibtex citation" })
+vim.keymap.set("i", "<C-S-i>", "<Plug>ZCite", { desc = "Insert citation" })
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
+vim.keymap.set("n", "<leader>zr", function()
+  vim.cmd("w") -- Save file before rendering
+  Snacks.terminal("quarto render " .. vim.fn.expand("%"), {
+    win = {
+      position = "float",
+      border = "rounded",
+      height = 0.8,
+      width = 0.8,
+    },
+    interactive = true,
+  })
+end, { desc = "Quarto Render (Terminal)" })
+
+vim.keymap.set("i", "<C-S-b>", function()
+  require("telescope").extensions.bibtex.bibtex()
+end, { desc = "insert bibtex" })
 
 -- Delete buffers
 vim.keymap.set("n", "<leader><delete>", function()

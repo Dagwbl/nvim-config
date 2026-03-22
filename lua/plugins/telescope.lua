@@ -36,9 +36,8 @@ return {
       -- },
     },
     keys = {
-      { "<leader>fb", "<cmd>Telescope bibtex<CR>", desc = "[b]ibtex" },
       {
-        "<C-S-i>",
+        "<C-S-b>",
         function()
           require("telescope").extensions.bibtex.bibtex()
         end,
