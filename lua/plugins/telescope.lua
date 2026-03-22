@@ -35,16 +35,7 @@ return {
       --   end,
       -- },
     },
-    keys = {
-      {
-        "<C-S-b>",
-        function()
-          require("telescope").extensions.bibtex.bibtex()
-        end,
-        mode = "i",
-        desc = "Insert BibTeX",
-      },
-    },
+    keys = {},
     config = function()
       local telescope = require("telescope")
       telescope.setup({

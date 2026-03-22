@@ -14,13 +14,13 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
 
-vim.keymap.set("n", "<leader>zs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
-vim.keymap.set("n", "<leader>zo", function()
+vim.keymap.set("n", "<leader>fs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
+vim.keymap.set("n", "<leader>fo", function()
   vim.ui.open(vim.fn.expand("%:p"))
 end, { desc = "Open file in system" })
 
 -- Markdown, Quarto, Zotero
-vim.keymap.set("n", "<leader>zc", "<cmd>Telescope bibtex<CR>", { desc = "Bibtex citation" })
+vim.keymap.set("n", "<leader>ic", "<cmd>Telescope bibtex<CR>", { desc = "Bibtex citation" })
 vim.keymap.set("i", "<C-S-i>", "<Plug>ZCite", { desc = "Insert citation" })
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
 vim.keymap.set("n", "<leader>zr", function()
