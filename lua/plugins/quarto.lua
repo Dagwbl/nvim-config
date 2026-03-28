@@ -7,12 +7,15 @@ return {
       "jmbuhr/otter.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
+    enabled = function()
+      return not vim.g.vscode
+    end,
     opts = {
       debug = false,
       closePreviewOnExit = true,
       lspFeatures = {
         enabled = true,
-        chunks = "all", -- curly
+        chunks = "curly", -- curly or all
         languages = { "r", "python", "julia", "bash", "html" },
         diagnostics = {
           enabled = true,

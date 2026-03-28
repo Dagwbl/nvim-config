@@ -23,7 +23,8 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "quarto" },
   callback = function()
     vim.api.nvim_set_hl(0, "QuartoRef", { fg = "#995AEF", bold = true })
-    vim.cmd([[syntax match QuartoRef /@\(fig\|tbl\|sec\|eq\)-[[:alnum:]_-]\+/]])
+    vim.cmd([[syntax match QuartoRef /\(@\|#\)\(fig\|tbl\|sec\|eq\)-[[:alnum:]_-]\+/]])
+    --    vim.cmd([[syntax match QuartoRef /\v(\@|#)(fig|tbl|sec|eq)-[[:alnum:]_-]+/]])
   end,
 })
 
