@@ -14,6 +14,10 @@ vim.keymap.set("i", "jk", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "Return Normal Mode" })
 vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
 
+-- Exit terminal mode (for opencode.nvim and other terminal apps)
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+vim.keymap.set("t", "jj", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 vim.keymap.set("n", "<leader>fs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
 vim.keymap.set("n", "<leader>fo", function()
   vim.ui.open(vim.fn.expand("%:p"))
