@@ -22,6 +22,7 @@ elseif hostname == "WVLIU-GD15" then
     zotero_sqlite = "C:/Users/jinpeng6/Zotero/zotero.sqlite",
     zotero_storage = "C:/Users/jinpeng6/Zotero/storage/",
     python = "C:/Users/jinpeng6/.conda/envs/main/python.exe",
+    R_path = "C:/Users/jinpeng6/scoop/shims/R.exe",
   }
 else
 end
@@ -29,6 +30,9 @@ end
 vim.g.my_paths = my_paths
 vim.g.writing_ft = { markdown = true, quarto = true }
 vim.g.python3_host_prog = my_paths.python
+if my_paths.R_path then
+  vim.g.R_path = my_paths.R_path
+end
 vim.opt.mouse = "a"
 vim.opt.wrap = true
 vim.opt.linebreak = true
