@@ -13,9 +13,11 @@ if hostname == "R7000" then
     term_path = "cd D:/blog/",
     zotero_bib = "D:/UA/Winter-2026/references.bib",
     zotero_sqlite = "C:/Users/jeapo/Zotero/zotero.sqlite",
+    ollama_api = "http://100.88.245.13:11434",
   }
 elseif hostname == "WVLIU-GD15" then
   my_paths = {
+    ollama_api = "http://localhost:11434",
     project_root = "~/personal/code",
     term_path = "cd D:/jinpeng6/Documents/Course/Winter-2026/",
     zotero_bib = "D:/jinpeng6/Documents/Course/Winter-2026/references.bib",
@@ -33,6 +35,8 @@ vim.g.python3_host_prog = my_paths.python
 if my_paths.R_path then
   vim.g.R_path = my_paths.R_path
 end
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.mouse = "a"
 vim.opt.wrap = true
 vim.opt.linebreak = true

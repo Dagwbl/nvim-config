@@ -113,7 +113,7 @@ return {
         preview = "main",
       },
       auto_preview = true,
-      replace_netrw = true,
+      replace_netrw = false,
     },
     notifier = {
       timeout = 5000,

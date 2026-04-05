@@ -6,16 +6,40 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      log_level = "TRACE",
+      log_level = "DEBUG",
+      adapters = {
+        ollama = function()
+          return require("codecompanion.adapters").ollama({
+            env = {
+              url = vim.g.my_paths.ollama_api,
+            },
+            schema = {
+              model = {
+                default = "llama3.1:8b",
+              },
+            },
+          })
+        end,
+      },
       interactions = {
         chat = {
+          -- adapter = "ollama",
+          adapter = "copilot",
+        },
+        cmd = {
           adapter = {
             name = "opencode",
             model = "minimax-m2.5-free",
           },
         },
+        inline = {
+          adapter = "copilot",
+        },
       },
     },
+    config = function(_, opts)
+      require("codecompanion").setup(opts)
+    end,
     keys = {
       { "<leader>ac", "<cmd>CodeCompanionChat<cr>", mode = { "n", "v" }, desc = "CodeCompanion: Chat" },
       { "<leader>aa", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "CodeCompanion: Actions" },

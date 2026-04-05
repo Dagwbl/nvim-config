@@ -1,5 +1,5 @@
 return {
-  { "akinsho/bufferline.nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = true },
   {
     "m4xshen/hardtime.nvim",
     enabled = false,
