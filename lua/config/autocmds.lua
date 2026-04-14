@@ -52,7 +52,6 @@ vim.api.nvim_create_autocmd("FocusLost", {
 vim.api.nvim_create_autocmd("FocusGained", {
   group = cursor_group,
   callback = function()
-    -- 重新获得焦点时恢复带闪烁的自定义设置
     vim.opt.guicursor = active_cursor
   end,
 })
