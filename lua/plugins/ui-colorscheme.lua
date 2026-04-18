@@ -9,7 +9,8 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      transparent_background = vim.g.is_wezterm,
+      -- transparent_background = vim.g.is_wezterm,
+      transparent_background = false,
       float = {
         transparent = false,
         blend = 10,
