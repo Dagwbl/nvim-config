@@ -37,7 +37,7 @@ if my_paths.R_path then
 end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.is_wezterm = os.getenv("WEZTERM_PANE") ~= nil
+vim.g.is_wezterm = os.getenv("WEZTERM_PANE") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm"
 
 vim.opt.mouse = "a"
 vim.opt.wrap = true

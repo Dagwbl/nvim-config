@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-latte",
+      colorscheme = "catppuccin-mocha",
     },
   },
   {
@@ -18,14 +18,7 @@ return {
       render_markdown = true,
       background = {
         light = "latte",
-        dark = "macchiato",
-      },
-      color_overrides = {
-        latte = {
-          base = "#fdf6e3",
-          mantle = "#eee8d5",
-          crust = "#ddd6c1",
-        },
+        dark = "mocha",
       },
       term_colors = false,
       dim_inactive = {
@@ -38,7 +31,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      opts.options.theme = "catppuccin-latte"
+      opts.options.theme = "catppuccin-mocha"
       opts.options.section_separators = { left = "", right = "" }
       opts.options.component_separators = { left = "", right = "" }
     end,
