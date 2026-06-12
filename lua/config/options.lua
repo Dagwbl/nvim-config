@@ -48,6 +48,7 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.spelllang = { "en", "cjk" }
+vim.opt.linespace = 1
 
 vim.opt.guicursor:append("i-ci-ve:ver25-blinkwait500-blinkoff1000-blinkon1000")
 
@@ -56,7 +57,7 @@ if vim.g.neovide then
     vim.cmd(my_paths.term_path)
   end
 
-  vim.opt.guifont = "Iosevka Nerd Font,IosevkaTermSlab Nerd Font Mono,JetBrainsMono Nerd Font Mono:h12"
+  vim.opt.guifont = "Maple Mono NF CN,Iosevka Nerd Font,IosevkaTermSlab Nerd Font Mono,JetBrainsMono Nerd Font Mono:h11"
 
   vim.keymap.set("n", "<F11>", function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
@@ -66,5 +67,5 @@ if vim.g.neovide then
   vim.g.neovide_cursor_smooth_blink = true
 else
   vim.opt.guifont =
-    "Iosevka Nerd Font,IosevkaTermSlab Nerd Font Mono,Inter,JetBrainsMono Nerd Font Mono,Symbols Nerd Font Mono:h12"
+    "Maple Mono NF CN,Iosevka Nerd Font,IosevkaTermSlab Nerd Font Mono,Inter,JetBrainsMono Nerd Font Mono,Symbols Nerd Font Mono:h11"
 end
