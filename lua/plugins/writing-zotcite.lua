@@ -6,7 +6,7 @@ return {
     opts = {
       -- zotero_db_path = vim.g.my_paths.zotero_bib,
       zotero_sqlite_path = vim.g.my_paths.zotero_sqlite,
-      key_type = "better-bibtex",
+      key_type = "zotero",
       open_in_zotero = true,
     },
   },
