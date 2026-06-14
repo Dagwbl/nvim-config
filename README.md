@@ -1,5 +1,25 @@
 # 🚀 Personal Neovim Configuration
 
+<!--toc:start-->
+
+- [🚀 Personal Neovim Configuration](#🚀-personal-neovim-configuration)
+  - [📚 Core Focus](#📚-core-focus)
+  - [🛠️ Key Technology Stack](#🛠️-key-technology-stack)
+  - [⌨️ Custom Keybindings](#️-custom-keybindings)
+    - [The `<leader>z` System Menu](#the-leaderz-system-menu)
+    - [Editing & Navigation](#editing-navigation)
+  - [🧠 Neovim Concepts & Cheatsheet](#🧠-neovim-concepts-cheatsheet)
+    - [1. The Grammar of Vim (Verb + Adjective + Noun)](#1-the-grammar-of-vim-verb-adjective-noun)
+    - [2. Powerful Text Objects](#2-powerful-text-objects)
+    - [3. Essential Power-User Commands](#3-essential-power-user-commands)
+    - [4. Macros: Automating Repetition](#4-macros-automating-repetition)
+  - [📂 Structure](#📂-structure)
+  - [🖥️ Environment Support](#🖥️-environment-support)
+  - [💡 Learning Notes](#💡-learning-notes)
+    - [Z Mode & Modal Editing](#z-mode-modal-editing)
+  - [Plugin Test](#plugin-test)
+  <!--toc:end-->
+
 A customized [LazyVim](https://github.com/LazyVim/LazyVim) setup tailored for **Academic Writing**, **Data Science (Quarto)**, and **Personal Knowledge Management (Obsidian)**.
 
 ## 📚 Core Focus
@@ -111,7 +131,9 @@ _The `z` menu is for cursor positioning, folding, and navigation. If you have to
 - `[t` / `]t`: Jump to previous/next TODO or FIXME.
 - `gi`: Go to the last place you entered Insert mode.
 
-## Plugin Test
+## Plugins Test
 
 I love you.
 I was conducted by you.
+
+This are a test sentences.

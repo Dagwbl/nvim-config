@@ -1,7 +1,9 @@
-local hostname = vim.uv.os_gethostname()
+local my_paths = vim.g.my_paths or {}
+
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
+  cmd = "Obsidian",
   ft = "markdown",
 
   -- lazy.nvim keybindings (updated to new format)
@@ -38,70 +40,57 @@ return {
     },
     workspaces = {
       {
-        name = "Home",
-        path = "D:/blog", -- Path for your work machine
+        name = "UofA",
+        path = my_paths.uofa_vault or "D:/jinpeng6/Documents/UofA",
       },
       {
-        name = "Office",
-        path = "D:/A/Jeapo's blog", -- Path for your home machine
+        name = "Blog",
+        path = my_paths.blog_vault or "D:/A/Jeapo's blog",
+        overrides = {
+          notes_subdir = "content/posts/note",
+          daily_notes = {
+            enabled = true,
+            folder = "content/diary",
+            date_format = "%Y/%B/%Y-%m-%d",
+            template = "diary.md",
+          },
+        },
       },
     },
-    -- 新笔记存放位置
-    notes_subdir = "content/posts/note",
+    -- Default location for new notes.
+    notes_subdir = "Notes",
 
-    -- 日记配置 - 使用年月嵌套结构
+    -- Default daily note layout for UofA: Notes/2026/06/20260613.md
     daily_notes = {
-      folder = "content/diary",
-      date_format = "%Y-%m-%d", -- 文件名格式: 2026-01-24.md
+      enabled = true,
+      folder = "Notes",
+      date_format = "%Y/%m/%Y%m%d",
       template = "diary.md",
     },
 
-    -- 自定义日记文件路径 - 使用独立模块处理
-    note_path_func = function(spec)
-      local Path = require("obsidian").Path
-      local diary_path = require("utils.diary_path")
-
-      -- 检查是否是日记笔记
-      if diary_path.is_diary_path(tostring(spec.dir)) then
-        -- 使用日记路径处理模块
-        local file_path = diary_path.generate_diary_path_with_date(spec.dir, spec.id)
-
-        if file_path then
-          return Path.new(file_path)
-        else
-          -- 如果失败，回退到默认路径
-          vim.notify("Using fallback path for diary", vim.log.levels.WARN)
-          return spec.dir / tostring(spec.id)
-        end
-      else
-        -- 普通笔记使用默认路径
-        return spec.dir / tostring(spec.id)
-      end
-    end,
-
-    -- 模板配置
+    -- Template settings.
     templates = {
       folder = "archetypes/nvim",
       date_format = "%Y-%m-%d", -- YYYY-MM-DD
       time_format = "%H:%M:%S", -- HH:mm:ss
       substitutions = {
-        -- ISO 8601 格式的完整日期时间
+        -- Full ISO 8601-like date and time.
         datetime = function()
           return os.date("%Y-%m-%dT%H:%M:%S%z")
         end,
-        -- 昨天
+        -- Yesterday.
         yesterday = function()
           return os.date("%Y-%m-%d", os.time() - 86400)
         end,
-        -- 明天
+        -- Tomorrow.
         tomorrow = function()
           return os.date("%Y-%m-%d", os.time() + 86400)
         end,
-        -- 周数
+        -- Week number.
         week = function()
           return os.date("%Y-W%W")
         end,
-        -- 当前时间（用于 stime）
+        -- Current time for template snippets.
         current_time = function()
           return os.date("%H:%M")
         end,
@@ -114,7 +103,7 @@ return {
       sort_reversed = true,
     },
 
-    -- 附件配置
+    -- Attachment settings.
     attachments = {
       folder = "static/images",
       img_name_func = function()

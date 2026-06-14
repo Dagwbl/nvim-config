@@ -26,6 +26,147 @@ end, { desc = "Open file in system" })
 vim.keymap.set("n", "<leader>ic", "<cmd>Telescope bibtex<CR>", { desc = "Bibtex citation" })
 vim.keymap.set("i", "<C-S-i>", "<Plug>ZCite", { desc = "Insert citation" })
 vim.keymap.set("n", "<leader>zp", "<cmd>QuartoPreview<cr>", { silent = true, noremap = true, desc = "Quarto preview" })
+
+local spell_dict_path = vim.fs.joinpath(vim.fn.stdpath("config"), "spell", "en.utf-8.add")
+
+local function read_spell_words()
+  if vim.fn.filereadable(spell_dict_path) == 0 then
+    return {}
+  end
+
+  local words = {}
+  local seen = {}
+  for _, line in ipairs(vim.fn.readfile(spell_dict_path)) do
+    local word = vim.trim(line):gsub("/.*$", "")
+    if word ~= "" and not word:match("^#") and not seen[word] then
+      seen[word] = true
+      table.insert(words, word)
+    end
+  end
+
+  return words
+end
+
+local function writing_lsp_config(server_name)
+  local configs = {
+    harper_ls = {
+      filetypes = {
+        "gitcommit",
+        "markdown",
+        "rst",
+        "quarto",
+        "typst",
+      },
+      settings = {
+        ["harper-ls"] = {
+          userDictPath = spell_dict_path,
+        },
+      },
+    },
+    ltex_plus = {
+      filetypes = {
+        "bib",
+        "gitcommit",
+        "markdown",
+        "org",
+        "plaintex",
+        "rst",
+        "rnoweb",
+        "tex",
+        "pandoc",
+        "quarto",
+      },
+      settings = {
+        ltex = {
+          language = "en-US",
+          checkFrequency = "manual",
+          dictionary = {
+            ["en-US"] = read_spell_words(),
+          },
+          disabledRules = {
+            ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
+          },
+        },
+      },
+    },
+  }
+
+  return configs[server_name] or {}
+end
+
+local function start_writing_lsp(server_name, display_name)
+  local ok, lspconfig = pcall(require, "lspconfig")
+  local server = ok and lspconfig[server_name]
+  if server then
+    if server.setup then
+      server.setup(vim.tbl_deep_extend("force", { autostart = false }, writing_lsp_config(server_name)))
+    end
+
+    if server.launch then
+      server.launch()
+      return
+    end
+
+    if server.manager then
+      server.manager.try_add_wrapper(0)
+      return
+    end
+  end
+
+  vim.notify("Unable to start " .. display_name .. ". Make sure it is installed in Mason.", vim.log.levels.ERROR)
+end
+
+local function toggle_writing_lsp(server_name, display_name)
+  local clients = vim.lsp.get_clients({ bufnr = 0, name = server_name })
+  if #clients > 0 then
+    for _, client in ipairs(clients) do
+      vim.lsp.buf_detach_client(0, client.id)
+      if vim.tbl_isempty(client.attached_buffers) then
+        client.stop()
+      end
+    end
+    vim.notify(display_name .. " stopped for this buffer", vim.log.levels.INFO)
+    return
+  end
+
+  start_writing_lsp(server_name, display_name)
+end
+
+local function writing_lsp_status()
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+  if #clients == 0 then
+    vim.notify("No LSP clients attached to this buffer", vim.log.levels.INFO)
+    return
+  end
+
+  local names = vim.tbl_map(function(client)
+    return client.name
+  end, clients)
+  vim.notify("Attached LSP clients: " .. table.concat(names, ", "), vim.log.levels.INFO)
+end
+
+local function writing_dict_status()
+  vim.notify(
+    ("Writing dictionary: %s (%d words)"):format(spell_dict_path, #read_spell_words()),
+    vim.log.levels.INFO
+  )
+end
+
+pcall(vim.api.nvim_del_user_command, "HarperToggle")
+vim.api.nvim_create_user_command("HarperToggle", function()
+  toggle_writing_lsp("harper_ls", "Harper")
+end, { desc = "Toggle Harper for current buffer" })
+pcall(vim.api.nvim_del_user_command, "LtexToggle")
+vim.api.nvim_create_user_command("LtexToggle", function()
+  toggle_writing_lsp("ltex_plus", "LTEX Plus")
+end, { desc = "Toggle LTEX Plus for current buffer" })
+pcall(vim.api.nvim_del_user_command, "WritingLspStatus")
+vim.api.nvim_create_user_command("WritingLspStatus", writing_lsp_status, { desc = "Show LSP clients for current buffer" })
+pcall(vim.api.nvim_del_user_command, "WritingDictStatus")
+vim.api.nvim_create_user_command("WritingDictStatus", writing_dict_status, { desc = "Show writing dictionary status" })
+
+vim.keymap.set("n", "<leader>zH", "<cmd>HarperToggle<cr>", { desc = "Toggle Harper" })
+vim.keymap.set("n", "<leader>zL", "<cmd>LtexToggle<cr>", { desc = "Toggle LTEX Plus" })
 vim.keymap.set("n", "<leader>zr", function()
   vim.cmd("w") -- Save file before rendering
   Snacks.terminal("quarto render " .. vim.fn.expand("%"), {

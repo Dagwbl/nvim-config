@@ -10,6 +10,8 @@ if hostname == "R7000" then
   my_paths = {
     project_root = "~/projects/work",
     term_path = "cd D:/blog/",
+    uofa_vault = "D:/UA",
+    blog_vault = "D:/blog",
     zotero_bib = "D:/UA/Winter-2026/references.bib",
     zotero_sqlite = "C:/Users/jeapo/Zotero/zotero.sqlite",
     ollama_api = "http://100.88.245.13:11434",
@@ -19,6 +21,8 @@ elseif hostname == "WVLIU-GD15" then
     ollama_api = "http://localhost:11434",
     project_root = "~/personal/code",
     term_path = "cd D:/jinpeng6/Documents/UofA/",
+    uofa_vault = "D:/jinpeng6/Documents/UofA",
+    blog_vault = "D:/A/Jeapo's blog",
     zotero_bib = "D:/jinpeng6/Documents/UofA/data/References/references.bib",
     zotero_sqlite = "C:/Users/jinpeng6/Zotero/zotero.sqlite",
     zotero_storage = "C:/Users/jinpeng6/Zotero/storage/",
@@ -48,6 +52,7 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.spelllang = { "en", "cjk" }
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.opt.linespace = 1
 
 vim.opt.guicursor:append("i-ci-ve:ver25-blinkwait500-blinkoff1000-blinkon1000")
