@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd("FocusGained", {
 -- Restore cursor position when reopening files
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
-    local last_pos = vim.api.nvim_buf_get_mark(0, "'\"")
+    local last_pos = vim.api.nvim_buf_get_mark(0, '"')
     if last_pos[1] > 1 and last_pos[1] <= vim.api.nvim_buf_line_count(0) then
       vim.api.nvim_win_set_cursor(0, last_pos)
     end
@@ -68,17 +68,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- WSL clipboard integration
 if vim.fn.has("wsl") == 1 then
-	vim.g.clipboard = {
-		name = "WslClipboard",
-		copy = {
-			["+"] = "win32yank.exe -i --crlf",
-			["*"] = "win32yank.exe -i --crlf",
-		},
-		paste = {
-			["+"] = "win32yank.exe -o --lf",
-			["*"] = "win32yank.exe -o --lf",
-		},
-		cache_enabled = 0,
-	}
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "win32yank.exe -i --crlf",
+      ["*"] = "win32yank.exe -i --crlf",
+    },
+    paste = {
+      ["+"] = "win32yank.exe -o --lf",
+      ["*"] = "win32yank.exe -o --lf",
+    },
+    cache_enabled = 0,
+  }
 else
 end

@@ -6,7 +6,18 @@
 local hostname = vim.uv.os_gethostname()
 local my_paths = {}
 
-if hostname == "R7000" then
+if vim.fn.has("wsl") == 1 then
+  my_paths = {
+    ollama_api = "http://localhost:11434",
+    project_root = "~/personal/code",
+    term_path = "cd /mnt/d/jinpeng6/Documents/UofA/",
+    uofa_vault = "/mnt/d/jinpeng6/Documents/UofA",
+    blog_vault = "/mnt/d/A/Jeapo's blog",
+    zotero_bib = "/mnt/d/jinpeng6/Documents/UofA/data/References/references.bib",
+    zotero_sqlite = "/mnt/c/Users/jinpeng6/Zotero/zotero.sqlite",
+    zotero_storage = "/mnt/c/Users/jinpeng6/Zotero/storage/",
+  }
+elseif hostname == "R7000" then
   my_paths = {
     project_root = "~/projects/work",
     term_path = "cd D:/blog/",

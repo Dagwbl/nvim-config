@@ -17,7 +17,14 @@ vim.keymap.set("i", ";;", "<C-o>", { desc = "Normal mode single operation" })
 -- Exit terminal mode without conflicting with terminal apps like Lazygit
 vim.keymap.set("t", "<C-q>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("n", "<leader>fs", '<cmd>silent !start explorer /select,"%:p"<cr>', { desc = "Show in Explorer" })
+vim.keymap.set("n", "<leader>fs", function()
+  local file = vim.fn.expand("%:p")
+  if vim.fn.has("win32") == 1 then
+    vim.fn.jobstart({ "explorer.exe", "/select," .. file }, { detach = true })
+  else
+    Snacks.terminal("yazi " .. vim.fn.shellescape(file))
+  end
+end, { desc = "Show current file in file manager" })
 vim.keymap.set("n", "<leader>fo", function()
   vim.ui.open(vim.fn.expand("%:p"))
 end, { desc = "Open file in system" })
