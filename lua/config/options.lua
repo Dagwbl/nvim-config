@@ -47,13 +47,22 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.g.is_wezterm = os.getenv("WEZTERM_PANE") ~= nil or os.getenv("TERM_PROGRAM") == "WezTerm"
 
-vim.opt.mouse = "a"
+vim.opt.mouse = "a" -- Enable mouse support
 vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.spelllang = { "en", "cjk" }
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
 vim.opt.linespace = 1
+
+vim.opt.laststatus = 0 -- Hide statusline
+vim.opt.clipboard = "unnamedplus" -- Use system clipboard
+vim.opt.autochdir = true -- Automatically create directories when saving files
+
+vim.opt.updatetime = 300 -- Faster completion
+vim.opt.winborder = "rounded" -- Rounded window borders
+vim.opt.fileencodings = 'utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1'
+vim.opt.enc = 'utf8'
 
 vim.opt.guicursor:append("i-ci-ve:ver25-blinkwait500-blinkoff1000-blinkon1000")
 
